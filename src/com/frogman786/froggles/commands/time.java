@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 public class time implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
-		if(lbl.equalsIgnoreCase("dawn")||lbl.equalsIgnoreCase("day")||lbl.equalsIgnoreCase("noon")||lbl.equalsIgnoreCase("dusk")||lbl.equalsIgnoreCase("night")){
 			if(sender instanceof Player){
 				Player player = (Player) sender;
 				int period = 0;
@@ -46,7 +45,5 @@ public class time implements CommandExecutor {
 				sender.sendMessage("no console use! (yet)");
 				return true;
 			}
-		}
-		return false;
 	}
 }

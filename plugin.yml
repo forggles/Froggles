@@ -1,8 +1,8 @@
 name: Froggles
 description: a whole pile o'shite
-version: 0.5.0
+version: 0.6.1
 main: com.frogman786.froggles.Froggles
-depend: [Vault]
+depend: [Vault,WorldGuard]
 commands:
   dawn:
     description: makes dawn

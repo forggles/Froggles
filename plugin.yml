@@ -1,0 +1,136 @@
+name: Froggles
+description: a whole pile o'shite
+version: 0.5.0
+main: com.frogman786.froggles.Froggles
+depend: [Vault]
+commands:
+  dawn:
+    description: makes dawn
+  day:
+    description: makes day
+  noon:
+    description: makes noon
+  dusk:
+    description: makes dusk
+  night:
+    description: makes night
+  who:
+    description: who is online
+  gm:
+    description: gamemode toggle
+  platform:
+    description: creates a block of glass below your feet
+  promo:
+    description: used to handle rank giving/taking
+  world:
+    description: used to find what world a player is in
+  pos:
+    description: /pos
+permissions:
+    frog.*:
+        description: Gives access to all frog commands
+        children:
+            frog.time.*: true
+            frog.who.*: true
+            frog.gamemode.*: true
+            frog.platform.*: true
+            frog.promo.*: true
+            frog.chat.formatting: true
+            frog.world.*: true
+            frog.pos.*: true
+        default: op
+    frog.time.*:
+        children:
+            frog.time.dawn: true
+            frog.time.day: true
+            frog.time.noon: true
+            frog.time.dusk: true
+            frog.time.night: true
+        description: all time commands
+        default: false
+    frog.who.*:
+        children:
+            frog.who.who: true
+            frog.who.info: true
+            frog.who.world: true
+        default: false
+    frog.gamemode.*:
+        children:
+            frog.gamemode.self: true
+            frog.gamemode.other: true
+        default: false
+    frog.platform.*:
+        children:
+            frog.platform.single: true
+            frog.platform.toggle: true
+            frog.platform.other: true
+        default: false
+    frog.world.*:
+        children:
+            frog.world.self: true
+            frog.world.other: true
+        default: false
+    frog.pos.*:
+        children:
+            frog.pos.self: true
+            frog.pos.other: true
+        default: false
+
+    frog.time.dawn:
+        description: dawn command
+        default: false
+    frog.time.day:
+        description: day command
+        default: false
+    frog.time.noon:
+        description: noon command
+        default: false
+    frog.time.dusk:
+        description: dusk command
+        default: false
+    frog.time.night:
+        description: night command
+        default: false
+
+    frog.who.who:
+        description: who command
+        default: true
+    frog.who.info:
+        description: complex who with info on all players
+        default: false
+    frog.who.world:
+        description: shows worlds players are in
+        default: false
+
+    frog.gamemode.self:
+        description: /gm
+        default: false
+    frog.gamemode.other:
+        description: /gm <name>
+        default: false
+
+    frog.platform.single:
+        description: creates a block of glass below your feet
+        default: false
+
+    frog.promo.*:
+        description: all promos
+        default: false
+    
+    frog.chat.formatting:
+        description: handles chat colour and formatting
+        default: false
+        
+    frog.world.self:
+        description: handles /world
+        default: false
+    frog.world.other:
+        description: handles /world name
+        default: false
+
+    frog.pos.self:
+        description: /pos command
+        default: false
+    frog.pos.other:
+        description: /pos name
+        default: false

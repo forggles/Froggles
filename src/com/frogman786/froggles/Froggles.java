@@ -11,6 +11,7 @@ import com.frogman786.froggles.commands.world;
 import com.frogman786.froggles.commands.platform;
 import com.frogman786.froggles.commands.time;
 import com.frogman786.froggles.commands.pos;
+import com.frogman786.froggles.commands.ban;
  
 public class Froggles extends JavaPlugin{
    
@@ -29,6 +30,7 @@ public class Froggles extends JavaPlugin{
         getCommand("noon").setExecutor(new time());
         getCommand("dusk").setExecutor(new time());
         getCommand("night").setExecutor(new time());
+        getCommand("kick").setExecutor(new ban());
     }
    
     public void onDisable() {

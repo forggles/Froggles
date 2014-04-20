@@ -1,8 +1,8 @@
 name: Froggles
 description: a whole pile o'shite
-version: 0.6.1
+version: 0.7.5
 main: com.frogman786.froggles.Froggles
-depend: [Vault,WorldGuard]
+depend: [Vault]
 commands:
   dawn:
     description: makes dawn
@@ -26,6 +26,10 @@ commands:
     description: used to find what world a player is in
   pos:
     description: /pos
+  spleeflayer:
+    description: used to make a sand layer for spleef
+  kick:
+    description: /kick command
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -38,6 +42,8 @@ permissions:
             frog.chat.formatting: true
             frog.world.*: true
             frog.pos.*: true
+            frog.spleef.*: true
+            frog.ban.*: true
         default: op
     frog.time.*:
         children:
@@ -74,6 +80,16 @@ permissions:
         children:
             frog.pos.self: true
             frog.pos.other: true
+        default: false
+    frog.spleef.*:
+        children:
+            frog.spleef.layer: true
+        default: false
+    frog.ban.*:
+        children:
+            frog.ban.kick: true
+            frog.ban.tempban: true
+            frog.ban.permban: true
         default: false
 
     frog.time.dawn:
@@ -133,4 +149,18 @@ permissions:
         default: false
     frog.pos.other:
         description: /pos name
+        default: false
+
+    frog.spleef.layer:
+        description: /spleeflayer command
+        default: false
+
+    frog.ban.kick:
+        description: /kick command
+        default: false
+    frog.ban.tempban:
+        description: /tempban command
+        default: false
+    frog.ban.permban:
+        description: /permban command
         default: false

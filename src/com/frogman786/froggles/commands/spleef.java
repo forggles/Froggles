@@ -12,7 +12,11 @@ import org.bukkit.command.CommandSender;
 public class spleef implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if(label.equalsIgnoreCase("spleeflayer")){
-			if(args.length == 6){
+			if(args.length >= 6){
+				Material material = Material.SAND;
+				if(args.length == 7){
+					material = Material.getMaterial(args[6]);
+				}
 				World world = Bukkit.getWorld(args[0]);
 				int x1 = Integer.parseInt(args[1]);
 				int x2 = Integer.parseInt(args[2]);
@@ -30,7 +34,7 @@ public class spleef implements CommandExecutor {
 										for (int z = z1; z < z2; z++){
 											Block b = world.getBlockAt(x, y, z);
 											if(b.getType().equals(Material.AIR)){
-												b.setType(Material.SAND);
+												b.setType(material);
 												totalset = totalset+1;
 											}else{
 												totalnotset = totalnotset+1;;

@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 public class Chat {
 	
-	public static Enum<ChatColor> getRankColour(Player p){
+	public static Enum<?> getRankColour(Player p){
 		if(p.hasPermission("nametags.color.black")){
 			return ChatColor.BLACK;
 		}else{

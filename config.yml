@@ -1,0 +1,29 @@
+Message:
+  time:
+    dawn:
+    day:
+    noon:
+    dusk:
+    night:
+  ban:
+    kick:
+    temp:
+    perm:
+  platform:
+    created:
+    toggled:
+  gamemode:
+    self:
+    other:
+  location:
+    pos:
+      self:
+      other:
+    world:
+      self:
+      other:
+  who:
+    all:
+    single:
+    info:
+    

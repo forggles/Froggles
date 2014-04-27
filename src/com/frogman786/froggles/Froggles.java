@@ -14,6 +14,7 @@ import com.frogman786.froggles.commands.time;
 import com.frogman786.froggles.commands.pos;
 import com.frogman786.froggles.commands.ban;
 import com.frogman786.froggles.commands.spleef;
+import com.frogman786.froggles.commands.me;
  
 public class Froggles extends JavaPlugin{
    
@@ -57,6 +58,9 @@ public class Froggles extends JavaPlugin{
         getCommand("night").setExecutor(new time());
         //glitches out no idea why? getCommand("kick").setExecutor(new ban()); probably something to do with the op check
         getCommand("spleeflayer").setExecutor(new spleef());
+        getCommand("me").setExecutor(new me());
+        getCommand("pms").setExecutor(new pms());
+        getCommand("r").setExecutor(new pms());
     }
    
    

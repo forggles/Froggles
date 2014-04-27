@@ -17,7 +17,7 @@ public class Events implements Listener {
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		char ColourSymbol = '\u00A7';
-		if(player.hasPermission("frog.chat.*")){
+		if(player.hasPermission("frog.chat.open")){
         message = message.replaceAll("&0", ColourSymbol + "0");
         message = message.replaceAll("&1", ColourSymbol + "1");
         message = message.replaceAll("&2", ColourSymbol + "2");

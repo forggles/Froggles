@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 0.8.0
+version: 1.0.0
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -30,6 +30,12 @@ commands:
     description: used to make a sand layer for spleef
   kick:
     description: /kick command
+  me:
+    description: same as default but with colour
+  pms:
+    description: message command
+  r:
+    description: message command
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -39,12 +45,11 @@ permissions:
             frog.gamemode.*: true
             frog.platform.*: true
             frog.promo.*: true
-            frog.chat.formatting: true
+            frog.chat.*: true
             frog.world.*: true
             frog.pos.*: true
             frog.spleef.*: true
             frog.ban.*: true
-            frog.chat.*: true
         default: op
     frog.time.*:
         children:
@@ -92,6 +97,11 @@ permissions:
             frog.ban.tempban: true
             frog.ban.permban: true
         default: false
+    frog.chat.*:
+        children:
+            frog.chat.me: true
+            frog.chat.open: true
+        default: false
 
     frog.time.dawn:
         description: dawn command
@@ -134,7 +144,7 @@ permissions:
         description: all promos
         default: false
     
-    frog.chat.formatting:
+    frog.chat.me:
         description: handles chat colour and formatting
         default: false
         
@@ -165,6 +175,10 @@ permissions:
     frog.ban.permban:
         description: /permban command
         default: false
-    frog.chat.*:
+
+    frog.chat.me:
         description: chat formatting
         default: false
+    frog.chat.open:
+        description: chat formatting
+        default: false    

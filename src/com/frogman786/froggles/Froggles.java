@@ -1,6 +1,7 @@
 package com.frogman786.froggles;
  
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,22 +18,11 @@ import com.frogman786.froggles.commands.spleef;
 public class Froggles extends JavaPlugin{
    
     private static Plugin plugin;
-   
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
-        getCommand("gm").setExecutor(new gm());
-        getCommand("who").setExecutor(new who());
-        getCommand("world").setExecutor(new world());
-        getCommand("pos").setExecutor(new pos());
-        getCommand("platform").setExecutor(new platform());
-        getCommand("dawn").setExecutor(new time());
-        getCommand("day").setExecutor(new time());
-        getCommand("noon").setExecutor(new time());
-        getCommand("dusk").setExecutor(new time());
-        getCommand("night").setExecutor(new time());
-//glitches out no idea why?        getCommand("kick").setExecutor(new ban());
-        getCommand("spleeflayer").setExecutor(new spleef());
+        configini();
+        commandini();
     }
    
     public void onDisable() {
@@ -45,6 +35,28 @@ public class Froggles extends JavaPlugin{
     }
     public static Plugin getPlugin() {
         return plugin;
+    }
+    
+    private void configini(){
+    	FileConfiguration config = getConfig();
+		config.addDefault("message.time.day", "daylight message");
+		config.options().copyDefaults(true);
+		saveConfig();
+    }
+    
+    private void commandini(){
+    	getCommand("gm").setExecutor(new gm());
+        getCommand("who").setExecutor(new who());
+        getCommand("world").setExecutor(new world());
+        getCommand("pos").setExecutor(new pos());
+        getCommand("platform").setExecutor(new platform());
+        getCommand("dawn").setExecutor(new time());
+        getCommand("day").setExecutor(new time());
+        getCommand("noon").setExecutor(new time());
+        getCommand("dusk").setExecutor(new time());
+        getCommand("night").setExecutor(new time());
+        //glitches out no idea why? getCommand("kick").setExecutor(new ban()); probably something to do with the op check
+        getCommand("spleeflayer").setExecutor(new spleef());
     }
    
    

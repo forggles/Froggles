@@ -16,10 +16,8 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 public class platform implements CommandExecutor {
 	private WorldGuardPlugin getWorldGuard() {
 	    Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
-	 
-	    // WorldGuard may not be loaded
 	    if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-	        return null; // Maybe you want throw an exception instead
+	        return null;
 	    }
 	 
 	    return (WorldGuardPlugin) plugin;
@@ -32,7 +30,7 @@ public class platform implements CommandExecutor {
 			    Location loc = player.getPlayer().getLocation();
 			    loc.setY(loc.getY() - 1);
 			    Block b = loc.getBlock();
-			    if(player.hasPermission("permissions.build") && getWorldGuard().canBuild(player, b)){
+			    if(player.hasPermission("permissions.build") && getWorldGuard().canBuild(player, b) && b.getType().equals(Material.AIR)){
 			    b.setType(Material.GLASS);
 				player.sendMessage(ChatColor.DARK_GREEN + "Platform created.");
 				return true;

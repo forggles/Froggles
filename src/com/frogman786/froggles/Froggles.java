@@ -1,5 +1,8 @@
 package com.frogman786.froggles;
  
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
@@ -19,6 +22,7 @@ import com.frogman786.froggles.commands.me;
 public class Froggles extends JavaPlugin{
    
     private static Plugin plugin;
+    public static Map<String, String> replymap = new HashMap<String, String>();
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -61,6 +65,7 @@ public class Froggles extends JavaPlugin{
         getCommand("me").setExecutor(new me());
         getCommand("pms").setExecutor(new pms());
         getCommand("r").setExecutor(new pms());
+        getCommand("pmsdebug").setExecutor(new pms());
     }
    
    

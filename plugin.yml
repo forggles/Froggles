@@ -1,9 +1,11 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.0.0
+version: 1.0.3
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
+  pmsdebug:
+    description: testing
   dawn:
     description: makes dawn
   day:
@@ -101,6 +103,7 @@ permissions:
         children:
             frog.chat.me: true
             frog.chat.open: true
+            frog.chat.pms: true
         default: false
 
     frog.time.dawn:
@@ -143,10 +146,6 @@ permissions:
     frog.promo.*:
         description: all promos
         default: false
-    
-    frog.chat.me:
-        description: handles chat colour and formatting
-        default: false
         
     frog.world.self:
         description: handles /world
@@ -181,4 +180,7 @@ permissions:
         default: false
     frog.chat.open:
         description: chat formatting
-        default: false    
+        default: false
+    frog.chat.pms:
+        description: chat formatting
+        default: false

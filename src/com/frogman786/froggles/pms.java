@@ -1,6 +1,6 @@
 package com.frogman786.froggles;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,14 +9,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.frogman786.froggles.Froggles;
 import com.frogman786.froggles.utils.Chat;
 
 public class pms implements CommandExecutor {
-
+	
 	public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
 		
-		HashMap<String, String> replymap = new HashMap<String, String>();
-		
+		Map<String, String> replymap = Froggles.replymap;
 		if(lbl.equalsIgnoreCase("pms")){
 			if(sender instanceof Player){
 				Player player = (Player) sender;
@@ -24,17 +24,8 @@ public class pms implements CommandExecutor {
 				if(sendto == null){
 					player.sendMessage(ChatColor.RED + "Player not found!");
 				}else{
-					StringBuilder messagefinal = new StringBuilder();
-					String[] words = args;
-					words[0] = "";
-					for(String word: words){
-						messagefinal.append(word + " ");
-					}
-					String name = (Chat.getRankColour(player) +player.getName() + ChatColor.WHITE+":");
-					String message = messagefinal.toString();
-					sendto.sendMessage(ChatColor.YELLOW + "PMS " +name +message);
-					String namesent = (Chat.getRankColour(sendto) +sendto.getName() + ChatColor.WHITE+":");
-					player.sendMessage(ChatColor.YELLOW + "PMS sent to " +namesent +message);
+					args[0] = "";
+					send(player,sendto,args);
 					replymap.put(sendto.getName(), player.getName());
 					return true;
 				}
@@ -48,17 +39,7 @@ public class pms implements CommandExecutor {
 				Player player = (Player) sender;
 				if(replymap.containsKey(player.getName())){
 					Player sendto = Bukkit.getServer().getPlayer(replymap.get(player.getName()));
-					StringBuilder messagefinal = new StringBuilder();
-					String[] words = args;
-					words[0] = "";
-					for(String word: words){
-						messagefinal.append(word + " ");
-					}
-					String name = (Chat.getRankColour(player) +player.getName() + ChatColor.WHITE+":");
-					String message = messagefinal.toString();
-					sendto.sendMessage(ChatColor.YELLOW + "PMS " +name +message);
-					String namesent = (Chat.getRankColour(sendto) +sendto.getName() + ChatColor.WHITE+":");
-					player.sendMessage(ChatColor.YELLOW + "PMS sent to " +namesent +message);
+					send(player,sendto,args);
 					replymap.put(sendto.getName(), player.getName());
 					return true;
 				}else{
@@ -70,9 +51,30 @@ public class pms implements CommandExecutor {
 				return true;
 			}
 		}
+		if(lbl.equalsIgnoreCase("pmsdebug")){
+			Player player = (Player) sender;
+			player.sendMessage(replymap.toString());
+			return true;
+		}
 		return false;
 	}
-	private String colourize(String message){// TODO add this with a permission node should be 10 minute job
+	private void send(Player player,Player sendto, String[] args){
+		StringBuilder messagefinal = new StringBuilder();
+		String[] words = args;;
+		for(String word: words){
+			messagefinal.append(word + " ");
+		}
+		String name = (Chat.getRankColour(player) +player.getName() + ChatColor.WHITE+":");
+		String message = messagefinal.toString();
+		if(player.hasPermission("frog.chat.pms")){
+			message = colourize(message);
+		}
+		sendto.sendMessage(ChatColor.YELLOW + "PMS " +name +message);
+		String namesent = (Chat.getRankColour(sendto) +sendto.getName() + ChatColor.WHITE+": ");
+		player.sendMessage(ChatColor.YELLOW + "PMS sent to " +namesent +message);
+		return;
+	}
+	private String colourize(String message){
 		char ColourSymbol = '\u00A7';
 		message = message.replaceAll("&0", ColourSymbol + "0");
 		message = message.replaceAll("&1", ColourSymbol + "1");
@@ -97,5 +99,4 @@ public class pms implements CommandExecutor {
 		message = message.replaceAll("&k", ColourSymbol + "k");
 		return message;
 	}
-
 }

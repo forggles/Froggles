@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -12,7 +13,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import com.frogman786.froggles.utils.Chat;
 
 public class Events implements Listener {
-	@EventHandler
+	@EventHandler (priority = EventPriority.LOWEST)
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		Player player = event.getPlayer();
 		String message = event.getMessage();

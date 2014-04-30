@@ -23,6 +23,7 @@ public class Froggles extends JavaPlugin{
    
     private static Plugin plugin;
     public static Map<String, String> replymap = new HashMap<String, String>();
+    public static Map<String, String> configmap = new HashMap<String, String>();
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -44,9 +45,14 @@ public class Froggles extends JavaPlugin{
     
     private void configini(){
     	FileConfiguration config = getConfig();
-		config.addDefault("message.time.day", "daylight message");
 		config.options().copyDefaults(true);
 		saveConfig();
+		for(String str: getConfig().getKeys(true)) {
+			 
+			String p = getConfig().getString(str);
+			 
+			configmap.put(str, p);
+		}
     }
     
     private void commandini(){
@@ -66,6 +72,7 @@ public class Froggles extends JavaPlugin{
         getCommand("pms").setExecutor(new pms());
         getCommand("r").setExecutor(new pms());
         getCommand("pmsdebug").setExecutor(new pms());
+        getCommand("cfgdebug").setExecutor(new com.frogman786.froggles.commands.cfg());
     }
    
    

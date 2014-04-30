@@ -1,11 +1,13 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.0.3
+version: 1.0.4
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
   pmsdebug:
-    description: testing
+    description: pms reply debug command
+  cfgdebug:
+    description: cfg debug command
   dawn:
     description: makes dawn
   day:

@@ -68,4 +68,29 @@ public class Chat {
 			}
 		}
 	}
+	public static String formatmessage(String message){
+		char ColourSymbol = '\u00A7';
+		message = message.replaceAll("&0", ColourSymbol + "0");
+		message = message.replaceAll("&1", ColourSymbol + "1");
+		message = message.replaceAll("&2", ColourSymbol + "2");
+		message = message.replaceAll("&3", ColourSymbol + "3");
+		message = message.replaceAll("&4", ColourSymbol + "4");
+		message = message.replaceAll("&5", ColourSymbol + "5");
+		message = message.replaceAll("&6", ColourSymbol + "6");
+		message = message.replaceAll("&7", ColourSymbol + "7");
+		message = message.replaceAll("&8", ColourSymbol + "8");
+		message = message.replaceAll("&9", ColourSymbol + "9");
+		message = message.replaceAll("&a", ColourSymbol + "a");
+		message = message.replaceAll("&b", ColourSymbol + "b");
+		message = message.replaceAll("&c", ColourSymbol + "c");
+		message = message.replaceAll("&d", ColourSymbol + "d");
+		message = message.replaceAll("&e", ColourSymbol + "e");
+		message = message.replaceAll("&f", ColourSymbol + "f");
+		message = message.replaceAll("&l", ColourSymbol + "l");
+		message = message.replaceAll("&m", ColourSymbol + "m");
+		message = message.replaceAll("&n", ColourSymbol + "n");
+		message = message.replaceAll("&o", ColourSymbol + "o");
+		message = message.replaceAll("&k", ColourSymbol + "k");
+		return message;	
+	}
 }

@@ -1,29 +1,24 @@
 message:
-  time:
-    dawn: $1 set $2 to $3.
-    day: $1 set $2 to $3.
-    noon: $1 set $2 to $3.
-    dusk: $1 set $2 to $3.
-    night: $1 set $2 to $3.
+  time: '&name &fset &2&world &fto &period.'
   ban:
-    kick:
-    temp:
-    perm:
+    kick: ''
+    temp: ''
+    perm: ''
   platform:
-    created:
-    toggled:
+    created: '&2Platform Created.'
+    toggled: '&2Platform Toggled (&mode).'
   gamemode:
-    self:
-    other:
+    self: '&fGamemode set to &gamemode'
+    other: '&fGamemode toggled for &target'
   location:
     pos:
-      self:
-      other:
+      self: '&3World: &2&world &3X: &f&x &3Y: &f&y &3Z: &f&z'
+      other: ''
     world:
-      self:
-      other:
+      self: '&2You are in&f: &7&world'
+      other: '&name is in&f: &7&world'
   who:
-    all:
-    single:
-    info:
+    all: '&aOnline players &c&online &f: &list'
+    single: ''
+    info: ''
     

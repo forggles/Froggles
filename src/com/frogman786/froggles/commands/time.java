@@ -1,17 +1,20 @@
 package com.frogman786.froggles.commands;
 
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import com.frogman786.froggles.Froggles;
+import com.frogman786.froggles.utils.Chat;
 
 public class time implements CommandExecutor {
+	Map<String, String> cfgmap = Froggles.configmap;
 	public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
 			if(sender instanceof Player){
 				Player player = (Player) sender;
@@ -35,7 +38,13 @@ public class time implements CommandExecutor {
 					}
 				}
 					World world = player.getWorld();
-					Bukkit.broadcastMessage(player.getPlayerListName() + ChatColor.WHITE +" Set " + ChatColor.DARK_GREEN + world.getName() + ChatColor.WHITE + " to " + lbl + ".");
+					String name = (Chat.getRankColour(player) + player.getName());
+					String message = cfgmap.get("message.time");
+					message = message.replaceAll("&name", name);
+					message = message.replaceAll("&world", world.getName());
+					message = message.replaceAll("&period", lbl);
+					message = Chat.formatmessage(message);
+					Bukkit.broadcastMessage(message);
 					world.setTime(period);
 					return true;
 				}else{

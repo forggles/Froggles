@@ -15,7 +15,6 @@ import com.frogman786.froggles.utils.Chat;
 public class pms implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
-		
 		Map<String, String> replymap = Froggles.replymap;
 		if(lbl.equalsIgnoreCase("pms")){
 			if(sender instanceof Player){
@@ -52,8 +51,7 @@ public class pms implements CommandExecutor {
 			}
 		}
 		if(lbl.equalsIgnoreCase("pmsdebug")){
-			Player player = (Player) sender;
-			player.sendMessage(replymap.toString());
+			sender.sendMessage(replymap.toString());
 			return true;
 		}
 		return false;

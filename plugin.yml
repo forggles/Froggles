@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.0.4
+version: 1.1.0
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -40,6 +40,10 @@ commands:
     description: message command
   r:
     description: message command
+  track:
+    description: tracks a player with compass
+  untrack:
+    description: untracks a player
 permissions:
     frog.*:
         description: Gives access to all frog commands

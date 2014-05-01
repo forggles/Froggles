@@ -13,7 +13,7 @@ message:
   location:
     pos:
       self: '&3World: &2&world &3X: &f&x &3Y: &f&y &3Z: &f&z'
-      other: ''
+      other: '&name &fis in &3World: &2&world &fat &3X: &f&x &3Y: &f&y &3Z: &f&z'
     world:
       self: '&2You are in&f: &7&world'
       other: '&name is in&f: &7&world'

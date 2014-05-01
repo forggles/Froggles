@@ -93,4 +93,10 @@ public class Chat {
 		message = message.replaceAll("&k", ColourSymbol + "k");
 		return message;	
 	}
+	public static String getPrefix(Player player){
+		String prefix = "";
+		
+		prefix = formatmessage(prefix);
+		return prefix;
+	}
 }

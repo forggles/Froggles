@@ -9,21 +9,9 @@ import org.bukkit.entity.Player;
 
 public class ban implements CommandExecutor {
 
-	private boolean kick(Player target,Player kicker, String message){
-		if(!target.isOp()){
-			target.kickPlayer(message);
-			Bukkit.getServer().broadcastMessage(ChatColor.RED+"Player "+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" was kicked reason:"+ChatColor.GRAY+message);
-			return true;
-		}else{
-			if(target.isOp() && kicker.isOp()){
-				target.kickPlayer(message);
-				Bukkit.getServer().broadcastMessage(ChatColor.RED+"Player "+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" was kicked reason:"+ChatColor.GRAY+message);
-				return true;
-			}else{
-				kicker.sendMessage("you can't kick an OP if you are not an OP");
-			}
-		}
-		return false;
+	private void kick(Player target,Player kicker, String message){
+		target.kickPlayer(message);
+		Bukkit.getServer().broadcastMessage(ChatColor.RED+"Player "+ChatColor.WHITE+target.getDisplayName()+ChatColor.RED+" was kicked reason:"+ChatColor.GRAY+message);
 	}
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if(label.equalsIgnoreCase("kick")){

@@ -24,6 +24,7 @@ public class Froggles extends JavaPlugin{
     private static Plugin plugin;
     public static Map<String, String> replymap = new HashMap<String, String>();
     public static Map<String, String> configmap = new HashMap<String, String>();
+    public static Map<String, String> trackingmap = new HashMap<String, String>();
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -66,13 +67,15 @@ public class Froggles extends JavaPlugin{
         getCommand("noon").setExecutor(new time());
         getCommand("dusk").setExecutor(new time());
         getCommand("night").setExecutor(new time());
-        //glitches out no idea why? getCommand("kick").setExecutor(new ban()); probably something to do with the op check
+        getCommand("kick").setExecutor(new ban());
         getCommand("spleeflayer").setExecutor(new spleef());
         getCommand("me").setExecutor(new me());
         getCommand("pms").setExecutor(new pms());
         getCommand("r").setExecutor(new pms());
         getCommand("pmsdebug").setExecutor(new pms());
         getCommand("cfgdebug").setExecutor(new com.frogman786.froggles.commands.cfg());
+        getCommand("track").setExecutor(new com.frogman786.froggles.commands.tracking());
+        getCommand("untrack").setExecutor(new com.frogman786.froggles.commands.tracking());
     }
    
    

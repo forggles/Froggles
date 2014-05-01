@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import com.frogman786.froggles.utils.Chat;
 
@@ -18,10 +19,19 @@ public class Events implements Listener {
 		Player player = event.getPlayer();
 		String message = event.getMessage();
 		if(player.hasPermission("frog.chat.open")){
-			message = colourize(message);
+			message = Chat.formatmessage(message);
 		}
 		event.setMessage(message);
 		}
+	
+	@EventHandler
+	public void onPlayerMove(PlayerMoveEvent evt){
+		Player player = evt.getPlayer();
+		if(Froggles.trackingmap.containsKey(player.getName())){
+			Player tracker = Bukkit.getPlayer(Froggles.trackingmap.get(player.getName()));
+			tracker.setCompassTarget(evt.getTo());
+		}
+	}
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent evt) {
@@ -54,30 +64,5 @@ public class Events implements Listener {
 			String messagemodifyed = (message + ", but actually wasn't, because nobody can kill the great frog.");
 			evt.setDeathMessage(messagemodifyed);
 		}
-	}
-	private String colourize(String message){
-		char ColourSymbol = '\u00A7';
-		message = message.replaceAll("&0", ColourSymbol + "0");
-		message = message.replaceAll("&1", ColourSymbol + "1");
-		message = message.replaceAll("&2", ColourSymbol + "2");
-		message = message.replaceAll("&3", ColourSymbol + "3");
-		message = message.replaceAll("&4", ColourSymbol + "4");
-		message = message.replaceAll("&5", ColourSymbol + "5");
-		message = message.replaceAll("&6", ColourSymbol + "6");
-		message = message.replaceAll("&7", ColourSymbol + "7");
-		message = message.replaceAll("&8", ColourSymbol + "8");
-		message = message.replaceAll("&9", ColourSymbol + "9");
-		message = message.replaceAll("&a", ColourSymbol + "a");
-		message = message.replaceAll("&b", ColourSymbol + "b");
-		message = message.replaceAll("&c", ColourSymbol + "c");
-		message = message.replaceAll("&d", ColourSymbol + "d");
-		message = message.replaceAll("&e", ColourSymbol + "e");
-		message = message.replaceAll("&f", ColourSymbol + "f");
-		message = message.replaceAll("&l", ColourSymbol + "l");
-		message = message.replaceAll("&m", ColourSymbol + "m");
-		message = message.replaceAll("&n", ColourSymbol + "n");
-		message = message.replaceAll("&o", ColourSymbol + "o");
-		message = message.replaceAll("&k", ColourSymbol + "k");
-		return message;
 	}
 }

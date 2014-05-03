@@ -28,8 +28,10 @@ public class Events implements Listener {
 	public void onPlayerMove(PlayerMoveEvent evt){
 		Player player = evt.getPlayer();
 		if(Froggles.trackingmap.containsKey(player.getName())){
-			Player tracker = Bukkit.getPlayer(Froggles.trackingmap.get(player.getName()));
-			tracker.setCompassTarget(evt.getTo());
+			if(Froggles.trackingmap.get(player.getName())){
+				Player tracked = com.frogman786.froggles.utils.Tracking.getNearest(player);
+				player.setCompassTarget(tracked.getLocation());
+			}
 		}
 	}
 	

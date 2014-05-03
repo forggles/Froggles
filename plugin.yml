@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.1.0
+version: 1.1.6
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -8,6 +8,8 @@ commands:
     description: pms reply debug command
   cfgdebug:
     description: cfg debug command
+  trackdebug:
+    description: tracking debug
   dawn:
     description: makes dawn
   day:
@@ -44,6 +46,10 @@ commands:
     description: tracks a player with compass
   untrack:
     description: untracks a player
+  announce:
+    description: sends a formatted global message
+  announcepromo:
+    description: sends a formatted global message for promos
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -58,6 +64,7 @@ permissions:
             frog.pos.*: true
             frog.spleef.*: true
             frog.ban.*: true
+            frog.announce: true
         default: op
     frog.time.*:
         children:
@@ -189,4 +196,7 @@ permissions:
         default: false
     frog.chat.pms:
         description: chat formatting
+        default: false
+    frog.announce:
+        description: /announce
         default: false

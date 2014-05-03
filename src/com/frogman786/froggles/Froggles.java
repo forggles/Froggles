@@ -9,7 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.frogman786.froggles.commands.Announce;
+import com.frogman786.froggles.commands.cfg;
 import com.frogman786.froggles.commands.gm;
+import com.frogman786.froggles.commands.tracking;
 import com.frogman786.froggles.commands.who;
 import com.frogman786.froggles.commands.world;
 import com.frogman786.froggles.commands.platform;
@@ -24,7 +27,7 @@ public class Froggles extends JavaPlugin{
     private static Plugin plugin;
     public static Map<String, String> replymap = new HashMap<String, String>();
     public static Map<String, String> configmap = new HashMap<String, String>();
-    public static Map<String, String> trackingmap = new HashMap<String, String>();
+    public static Map<String,Boolean> trackingmap = new HashMap<String, Boolean>();
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -57,25 +60,40 @@ public class Froggles extends JavaPlugin{
     }
     
     private void commandini(){
+    	//gamemode
     	getCommand("gm").setExecutor(new gm());
+    	//info
         getCommand("who").setExecutor(new who());
+        //info coords
         getCommand("world").setExecutor(new world());
         getCommand("pos").setExecutor(new pos());
+        //platform
         getCommand("platform").setExecutor(new platform());
+        //time
         getCommand("dawn").setExecutor(new time());
         getCommand("day").setExecutor(new time());
         getCommand("noon").setExecutor(new time());
         getCommand("dusk").setExecutor(new time());
         getCommand("night").setExecutor(new time());
-        getCommand("kick").setExecutor(new ban());
+        //kick/ban
+        //getCommand("kick").setExecutor(new ban());
+        //spleef
         getCommand("spleeflayer").setExecutor(new spleef());
+        //announce
         getCommand("me").setExecutor(new me());
+        //pms
         getCommand("pms").setExecutor(new pms());
         getCommand("r").setExecutor(new pms());
+        //compass
+        getCommand("track").setExecutor(new tracking());
+        getCommand("untrack").setExecutor(new tracking());
+        //debugs
         getCommand("pmsdebug").setExecutor(new pms());
-        getCommand("cfgdebug").setExecutor(new com.frogman786.froggles.commands.cfg());
-        getCommand("track").setExecutor(new com.frogman786.froggles.commands.tracking());
-        getCommand("untrack").setExecutor(new com.frogman786.froggles.commands.tracking());
+        getCommand("cfgdebug").setExecutor(new cfg());
+        getCommand("trackdebug").setExecutor(new tracking());
+        //announcements
+        getCommand("announce").setExecutor(new Announce());
+        getCommand("announcepromo").setExecutor(new Announce());
     }
    
    

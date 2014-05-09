@@ -99,4 +99,93 @@ public class Chat {
 		prefix = formatmessage(prefix);
 		return prefix;
 	}
+	public static String rainbowText(String message){
+		String messagestrip = message;
+		int count = 0;
+		StringBuilder messagebuilder = new StringBuilder();
+		while(count < messagestrip.length()-1){
+			char character = messagestrip.charAt(count);
+			messagebuilder.append("&0" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&1" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&2" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&3" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&4" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&5" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&6" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&7" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&8" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&9" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&a" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&b" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&c" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&d" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&e" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+			character = messagestrip.charAt(count);
+			messagebuilder.append("&f" + character);
+			if(count != (messagestrip.length()-1)){
+				count = count+1;
+				}else{break;}
+		}
+		message=formatmessage(messagebuilder.toString());
+		return message;
+	}
 }

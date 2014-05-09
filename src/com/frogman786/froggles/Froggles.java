@@ -12,13 +12,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.frogman786.froggles.commands.Announce;
 import com.frogman786.froggles.commands.cfg;
 import com.frogman786.froggles.commands.gm;
+import com.frogman786.froggles.commands.rainbow;
 import com.frogman786.froggles.commands.tracking;
 import com.frogman786.froggles.commands.who;
 import com.frogman786.froggles.commands.world;
 import com.frogman786.froggles.commands.platform;
 import com.frogman786.froggles.commands.time;
 import com.frogman786.froggles.commands.pos;
-import com.frogman786.froggles.commands.ban;
+//import com.frogman786.froggles.commands.ban;
 import com.frogman786.froggles.commands.spleef;
 import com.frogman786.froggles.commands.me;
  
@@ -28,6 +29,7 @@ public class Froggles extends JavaPlugin{
     public static Map<String, String> replymap = new HashMap<String, String>();
     public static Map<String, String> configmap = new HashMap<String, String>();
     public static Map<String,Boolean> trackingmap = new HashMap<String, Boolean>();
+    public static Map<String,Boolean> rainbowmap = new HashMap<String, Boolean>();
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -94,6 +96,8 @@ public class Froggles extends JavaPlugin{
         //announcements
         getCommand("announce").setExecutor(new Announce());
         getCommand("announcepromo").setExecutor(new Announce());
+        //automatic text formatting
+        getCommand("rainbowtext").setExecutor(new rainbow());
     }
    
    

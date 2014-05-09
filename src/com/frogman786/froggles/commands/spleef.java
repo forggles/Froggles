@@ -33,7 +33,7 @@ public class spleef implements CommandExecutor {
 									for (int x = x1; x < x2; x++){
 										for (int z = z1; z < z2; z++){
 											Block b = world.getBlockAt(x, y, z);
-											if(b.getType().equals(Material.AIR)){
+											if(b.getType().equals(Material.AIR)){// TODO actually add a secondary command /cuboid world x1 y1 z1 x2 y2 z2 material 
 												b.setType(material);
 												totalset = totalset+1;
 											}else{

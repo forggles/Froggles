@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.1.6
+version: 1.2.0
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -50,6 +50,8 @@ commands:
     description: sends a formatted global message
   announcepromo:
     description: sends a formatted global message for promos
+  rainbowtext:
+    description: send a formatted message for fun
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -117,6 +119,7 @@ permissions:
             frog.chat.me: true
             frog.chat.open: true
             frog.chat.pms: true
+            frog.chat.rainbow: true
         default: false
 
     frog.time.dawn:
@@ -197,6 +200,10 @@ permissions:
     frog.chat.pms:
         description: chat formatting
         default: false
+    frog.chat.rainbow:
+        description: chat formatting
+        default: false
+        
     frog.announce:
         description: /announce
         default: false

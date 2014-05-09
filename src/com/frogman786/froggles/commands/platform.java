@@ -25,7 +25,6 @@ public class platform implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command,String label, String[] args) {
 		if(sender instanceof Player){
 			Player player = (Player) sender;
-		//NEED TO ADD REGION AND AIR CHECKING TO THIS
 			if(player.hasPermission("frog.platform.single")){
 			    Location loc = player.getPlayer().getLocation();
 			    loc.setY(loc.getY() - 1);

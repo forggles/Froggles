@@ -18,6 +18,9 @@ public class Events implements Listener {
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		Player player = event.getPlayer();
 		String message = event.getMessage();
+		if(Froggles.rainbowmap.containsKey(player.getName())&Froggles.rainbowmap.get(player.getName())){
+			message = Chat.rainbowText(message);
+		}
 		if(player.hasPermission("frog.chat.open")){
 			message = Chat.formatmessage(message);
 		}

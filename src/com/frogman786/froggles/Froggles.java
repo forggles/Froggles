@@ -81,6 +81,7 @@ public class Froggles extends JavaPlugin{
         //getCommand("kick").setExecutor(new ban());
         //spleef
         getCommand("spleeflayer").setExecutor(new spleef());
+        getCommand("cuboid").setExecutor(new spleef());
         //announce
         getCommand("me").setExecutor(new me());
         //pms

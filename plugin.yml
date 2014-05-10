@@ -34,6 +34,8 @@ commands:
     description: /pos
   spleeflayer:
     description: used to make a sand layer for spleef
+  cuboid:
+    description: used to make a solid cuboid of any material
   kick:
     description: /kick command
   me:

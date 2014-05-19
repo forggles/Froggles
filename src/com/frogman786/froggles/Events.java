@@ -6,6 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -68,6 +70,26 @@ public class Events implements Listener {
 		if(message.startsWith("frogman786 was slain")){
 			String messagemodifyed = (message + ", but actually wasn't, because nobody can kill the great frog.");
 			evt.setDeathMessage(messagemodifyed);
+		}
+	}
+	@EventHandler
+	public void onBlockTouch(BlockBreakEvent evt){
+		Player player = evt.getPlayer();
+		if(player.hasPermission("frog.blocks.blacklist")){
+			evt.setCancelled(false);
+			player.sendMessage("block is: "+evt.getBlock().getType().name());
+		}else{
+			//evt.getBlock().getType().name())
+			//player.sendMessage(ChatColor.RED+"ERROR: you cannot break this block");
+			//evt.setCancelled(true);
+		}
+	}
+	@EventHandler
+	public void onZombieSight(EntityTargetLivingEntityEvent evt){
+		String seen = evt.getTarget().toString();
+		String saw = evt.getEntityType().toString();
+		if(Froggles.zom_vill_safe==true&&seen=="CraftVillager"&&saw=="ZOMBIE"){
+			evt.setCancelled(true);
 		}
 	}
 }

@@ -22,6 +22,8 @@ import com.frogman786.froggles.commands.pos;
 //import com.frogman786.froggles.commands.ban;
 import com.frogman786.froggles.commands.spleef;
 import com.frogman786.froggles.commands.me;
+import com.frogman786.froggles.commands.zombies;
+import com.frogman786.froggles.commands.frogcommand;
  
 public class Froggles extends JavaPlugin{
    
@@ -30,6 +32,10 @@ public class Froggles extends JavaPlugin{
     public static Map<String, String> configmap = new HashMap<String, String>();
     public static Map<String,Boolean> trackingmap = new HashMap<String, Boolean>();
     public static Map<String,Boolean> rainbowmap = new HashMap<String, Boolean>();
+    public static String[] bannedblocks = {"AIR"};
+	public static boolean zom_vill_safe = false;
+	public static boolean frogcommand = false;
+	
     public void onEnable() {
         plugin = this;
         registerEvents(this, new Events());
@@ -66,6 +72,7 @@ public class Froggles extends JavaPlugin{
     	getCommand("gm").setExecutor(new gm());
     	//info
         getCommand("who").setExecutor(new who());
+        getCommand("colourcodes").setExecutor(new com.frogman786.froggles.commands.colours());
         //info coords
         getCommand("world").setExecutor(new world());
         getCommand("pos").setExecutor(new pos());
@@ -99,6 +106,9 @@ public class Froggles extends JavaPlugin{
         getCommand("announcepromo").setExecutor(new Announce());
         //automatic text formatting
         getCommand("rainbowtext").setExecutor(new rainbow());
+        //zombie protection
+        getCommand("zombiesafety").setExecutor(new zombies());
+        getCommand("frogcommand").setExecutor(new frogcommand());
     }
    
    

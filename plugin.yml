@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.0
+version: 1.2.2
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -54,6 +54,12 @@ commands:
     description: sends a formatted global message for promos
   rainbowtext:
     description: send a formatted message for fun
+  colourcodes:
+    description: sends you a reply with the standard colourcodes for minecraft
+  zombiesafety:
+    description: protects zombies (duh)
+  frogcommand:
+    description: sets a toggle switch for commandblocks
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -69,6 +75,8 @@ permissions:
             frog.spleef.*: true
             frog.ban.*: true
             frog.announce: true
+            frog.blocks.banned: true
+            frog.zombie.protect: true
         default: op
     frog.time.*:
         children:
@@ -208,4 +216,12 @@ permissions:
         
     frog.announce:
         description: /announce
+        default: false
+        
+    frog.blocks.banned:
+        description: handles (currently hardcoded)banned blocks
+        default: false
+        
+    frog.zombie.protect:
+        description: protects zombies
         default: false

@@ -14,7 +14,9 @@ public class pos implements CommandExecutor {
 				int x = (int) player.getLocation().getX();
 				int y = (int) player.getLocation().getY();
 				int z = (int) player.getLocation().getZ();
-				player.sendMessage(ChatColor.DARK_AQUA+"World: " + ChatColor.DARK_GREEN + player.getWorld().getName() + ChatColor.DARK_AQUA + " X: "+ChatColor.WHITE+x+ ChatColor.DARK_AQUA +" Y: "+ChatColor.WHITE+y+ ChatColor.DARK_AQUA +" Z: "+ChatColor.WHITE+z);
+				float yaw = player.getLocation().getYaw();
+				float pitch = player.getLocation().getPitch();
+				player.sendMessage(ChatColor.DARK_AQUA+"World: " + ChatColor.DARK_GREEN + player.getWorld().getName() + ChatColor.DARK_AQUA + " X: "+ChatColor.WHITE+x+ ChatColor.DARK_AQUA +" Y: "+ChatColor.WHITE+y+ ChatColor.DARK_AQUA +" Z: "+ChatColor.WHITE+z+ChatColor.DARK_AQUA +" Yaw: "+ChatColor.WHITE+yaw+ ChatColor.DARK_AQUA +" Pitch: "+ChatColor.WHITE+pitch );
 				return true;
 			}else{
 				player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");

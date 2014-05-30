@@ -24,6 +24,7 @@ import com.frogman786.froggles.commands.spleef;
 import com.frogman786.froggles.commands.me;
 import com.frogman786.froggles.commands.zombies;
 import com.frogman786.froggles.commands.frogcommand;
+import com.frogman786.froggles.commands.spawns;
  
 public class Froggles extends JavaPlugin{
    
@@ -35,6 +36,10 @@ public class Froggles extends JavaPlugin{
     public static String[] bannedblocks = {"AIR"};
 	public static boolean zom_vill_safe = false;
 	public static boolean frogcommand = false;
+	public static Map<String, Integer> spawnmapx = new HashMap<String,Integer>();
+	public static Map<String, Integer> spawnmapy = new HashMap<String,Integer>();
+	public static Map<String, Integer> spawnmapz = new HashMap<String,Integer>();
+	
 	
     public void onEnable() {
         plugin = this;
@@ -109,6 +114,7 @@ public class Froggles extends JavaPlugin{
         //zombie protection
         getCommand("zombiesafety").setExecutor(new zombies());
         getCommand("frogcommand").setExecutor(new frogcommand());
+        getCommand("gamespawn").setExecutor(new spawns());
     }
    
    

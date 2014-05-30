@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.2
+version: 1.2.3
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -60,6 +60,8 @@ commands:
     description: protects zombies (duh)
   frogcommand:
     description: sets a toggle switch for commandblocks
+  gamespawn:
+    description: sets a bedspawn location
 permissions:
     frog.*:
         description: Gives access to all frog commands

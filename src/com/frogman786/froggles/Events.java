@@ -2,6 +2,8 @@ package com.frogman786.froggles;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,6 +15,8 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
+
 import com.frogman786.froggles.utils.Chat;
 
 public class Events implements Listener {
@@ -20,7 +24,7 @@ public class Events implements Listener {
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		Player player = event.getPlayer();
 		String message = event.getMessage();
-		if(Froggles.rainbowmap.containsKey(player.getName())&Froggles.rainbowmap.get(player.getName())){
+		if(Froggles.rainbowmap.containsKey(player.getName())&&Froggles.rainbowmap.get(player.getName())){
 			message = Chat.rainbowText(message);
 		}
 		if(player.hasPermission("frog.chat.open")){
@@ -90,6 +94,19 @@ public class Events implements Listener {
 		String saw = evt.getEntityType().toString();
 		if(Froggles.zom_vill_safe==true&&seen=="CraftVillager"&&saw=="ZOMBIE"){
 			evt.setCancelled(true);
+		}
+	}
+	
+	@EventHandler
+	public void onRespawn(PlayerRespawnEvent evt){
+		Player player = evt.getPlayer();
+		String playern = player.getName();
+		if(Froggles.spawnmapx.containsKey(playern)){
+			int x = Froggles.spawnmapx.get(playern);
+			int y = Froggles.spawnmapy.get(playern);
+			int z = Froggles.spawnmapz.get(playern);
+			World world = player.getWorld();
+			evt.setRespawnLocation(new Location(world,x,y,z));
 		}
 	}
 }

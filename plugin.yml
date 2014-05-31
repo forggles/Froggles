@@ -79,6 +79,7 @@ permissions:
             frog.announce: true
             frog.blocks.banned: true
             frog.zombie.protect: true
+            frog.gamespawn: true
         default: op
     frog.time.*:
         children:
@@ -226,4 +227,8 @@ permissions:
         
     frog.zombie.protect:
         description: protects zombies
+        default: false
+        
+    frog.gamespawn:
+        description: for setting temporary spawns
         default: false

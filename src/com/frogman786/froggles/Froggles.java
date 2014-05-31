@@ -65,7 +65,7 @@ public class Froggles extends JavaPlugin{
 		config.options().copyDefaults(true);
 		saveConfig();
 		for(String str: getConfig().getKeys(true)) {
-			 
+
 			String p = getConfig().getString(str);
 			 
 			configmap.put(str, p);

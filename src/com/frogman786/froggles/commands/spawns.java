@@ -12,10 +12,16 @@ public class spawns implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl,String[] args) {
+		boolean allow = false;
 		if(sender instanceof Player){
-			sender.sendMessage("no, console only");
-			return true;
+			Player player = (Player) sender;
+			if(player.hasPermission("frog.gamespawn")){
+				allow = true;
+			}
 		}else{
+			allow = true;
+		}
+		if(allow){
 			if(args.length==4){
 				Player target = Bukkit.getPlayer(args[0]);
 				if(target != null){
@@ -39,6 +45,7 @@ public class spawns implements CommandExecutor {
 				return true;
 			}
 		}
+		return true;
 	}
 
 }

@@ -5,11 +5,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
+
+import com.frogman786.froggles.utils.rChest;
 
 public class chest implements CommandExecutor  {
 
@@ -28,25 +30,26 @@ public class chest implements CommandExecutor  {
 		if(allow){
 			//main method
 			if(args.length==5){
-				int x = 0;
+				int x;
 				int y;
 				int z;
+				int tier = 1;
 				World world = Bukkit.getWorld(args[0]);
 				if(world != null){
 					try{
 						x = Integer.parseInt(args[1]);
 						y = Integer.parseInt(args[2]);
 						z = Integer.parseInt(args[3]);
+						tier = Integer.parseInt(args[4]);
 					}catch (Exception NumberFormatException){
-							sender.sendMessage(ChatColor.RED+"ERROR: x, y or z are not number");
+							sender.sendMessage(ChatColor.RED+"ERROR: x, y, z or tier is not a valid number");
 							return false;
 					}
 					Block block = world.getBlockAt(x, y, z);
 					block.setType(Material.CHEST);
-					Inventory chest = (Inventory) block;
-					chest.clear();
-					//so far
-					chest.addItem(items)
+					Chest chest = (Chest) block.getState(); 
+					chest.getInventory().setContents(rChest.getRandomContents(tier));
+					return true;
 					
 					
 					

@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.frogman786.froggles.commands.Announce;
 import com.frogman786.froggles.commands.cfg;
+import com.frogman786.froggles.commands.chest;
 import com.frogman786.froggles.commands.gm;
 import com.frogman786.froggles.commands.rainbow;
 import com.frogman786.froggles.commands.tracking;
@@ -115,6 +116,7 @@ public class Froggles extends JavaPlugin{
         getCommand("zombiesafety").setExecutor(new zombies());
         getCommand("frogcommand").setExecutor(new frogcommand());
         getCommand("gamespawn").setExecutor(new spawns());
+        getCommand("randomchest").setExecutor(new chest());
     }
    
    

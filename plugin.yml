@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.3
+version: 1.2.5
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -62,6 +62,8 @@ commands:
     description: sets a toggle switch for commandblocks
   gamespawn:
     description: sets a bedspawn location
+  randomchest:
+    description: fot spawning random chests in survival games
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -80,6 +82,8 @@ permissions:
             frog.blocks.banned: true
             frog.zombie.protect: true
             frog.gamespawn: true
+            frog.filter.*: true
+            frog.chests: true
         default: op
     frog.time.*:
         children:
@@ -133,6 +137,11 @@ permissions:
             frog.chat.open: true
             frog.chat.pms: true
             frog.chat.rainbow: true
+        default: false
+    frog.filter.*:
+        children:
+            frog.filter.bypass: true
+            frog.filter.notify: true
         default: false
 
     frog.time.dawn:
@@ -231,4 +240,15 @@ permissions:
         
     frog.gamespawn:
         description: for setting temporary spawns
+        default: false
+    
+    frog.filter.bypass:
+        description: for chat filter bypassing
+        default: false
+    frog.filter.notify:
+        description: for notifying admins of people attempting to bypass the chat filter
+        default: false
+        
+    frog.chests:
+        description: for random chests
         default: false

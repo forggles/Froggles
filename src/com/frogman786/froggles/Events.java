@@ -18,12 +18,20 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import com.frogman786.froggles.utils.Chat;
+import com.frogman786.froggles.utils.filter;
 
 public class Events implements Listener {
 	@EventHandler (priority = EventPriority.LOWEST)
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		Player player = event.getPlayer();
 		String message = event.getMessage();
+		if(!(filter.swears(message))){
+			if(!(player.hasPermission("frog.filter.bypass"))){
+			event.setCancelled(true);
+			player.sendMessage(filter.nomessage());
+			filter.notify(player, message);
+			}
+		}
 		if(Froggles.rainbowmap.containsKey(player.getName())&&Froggles.rainbowmap.get(player.getName())){
 			message = Chat.rainbowText(message);
 		}

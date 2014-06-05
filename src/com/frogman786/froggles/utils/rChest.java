@@ -29,7 +29,7 @@ public class rChest {
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5)};
-		ItemStack[] tier2 = {new ItemStack(Material.WOOD_AXE, 1),
+		ItemStack[] tier2 = {new ItemStack(Material.WOOD_AXE, 2),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
@@ -49,7 +49,7 @@ public class rChest {
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5)};
-		ItemStack[] tier3 = {new ItemStack(Material.WOOD_AXE, 1),
+		ItemStack[] tier3 = {new ItemStack(Material.WOOD_AXE, 3),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
 				new ItemStack(Material.ARROW, 5),
@@ -86,7 +86,7 @@ public class rChest {
 		    int randomItem = rand.nextInt((19 - 0) + 1) + 0;
 		    finalchest[randomSlot] = tierg[randomItem];
 	    }
-		return null;
+		return finalchest;
 		
 	}
 }

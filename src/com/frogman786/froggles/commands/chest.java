@@ -50,9 +50,6 @@ public class chest implements CommandExecutor  {
 					Chest chest = (Chest) block.getState(); 
 					chest.getInventory().setContents(rChest.getRandomContents(tier));
 					return true;
-					
-					
-					
 				}else{
 					sender.sendMessage(ChatColor.RED+"ERROR: world is invalid");
 				}

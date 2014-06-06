@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.6
+version: 1.2.7
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:

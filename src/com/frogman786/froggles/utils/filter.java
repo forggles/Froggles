@@ -6,12 +6,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import com.frogman786.froggles.Froggles;
+
 
 
 public class filter {
-	private static String[] swears = {"shit","piss","fuck","cunt","cock","fucker","tits","turd","twat","bitch","whore","penis","vagina","dick","yingjang","gay","homo"};
 	public static boolean swears(String message){
-		for(String word:swears){
+		for(String word:Froggles.swears){
 			if(message.contains(word)){
 				return false;
 			}
@@ -26,7 +27,7 @@ public class filter {
 				"swearing is bad no swear swear",
 				"count to 10 and rethink what you said"};
 		Random rand = new Random();
-	    int randomNum = rand.nextInt((5 - 0) + 1) + 0;
+	    int randomNum = rand.nextInt((4 - 0) + 1) + 0;
 	    return mess[randomNum];
 	}
 	

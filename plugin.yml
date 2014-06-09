@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.7
+version: 1.2.9
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -63,7 +63,9 @@ commands:
   gamespawn:
     description: sets a bedspawn location
   randomchest:
-    description: fot spawning random chests in survival games
+    description: for spawning random chests in survival games
+  chatfilter:
+    description: for adding temporary words to the filter
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -142,6 +144,9 @@ permissions:
         children:
             frog.filter.bypass: true
             frog.filter.notify: true
+            frog.filter.add: true
+            frog.filter.remove: true
+            frog.filter.list: true
         default: false
 
     frog.time.dawn:
@@ -247,6 +252,15 @@ permissions:
         default: false
     frog.filter.notify:
         description: for notifying admins of people attempting to bypass the chat filter
+        default: false
+    frog.filter.add:
+        description: for adding words to the chat filter.
+        default: false
+    frog.filter.remove:
+        description: for removing words from the filter
+        default: false
+    frog.filter.list:
+        description: for listing all filtered words
         default: false
         
     frog.chests:

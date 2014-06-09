@@ -1,6 +1,9 @@
 package com.frogman786.froggles;
  
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
@@ -12,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.frogman786.froggles.commands.Announce;
 import com.frogman786.froggles.commands.cfg;
 import com.frogman786.froggles.commands.chest;
+import com.frogman786.froggles.commands.filter;
 import com.frogman786.froggles.commands.gm;
 import com.frogman786.froggles.commands.rainbow;
 import com.frogman786.froggles.commands.tracking;
@@ -40,7 +44,7 @@ public class Froggles extends JavaPlugin{
 	public static Map<String, Integer> spawnmapx = new HashMap<String,Integer>();
 	public static Map<String, Integer> spawnmapy = new HashMap<String,Integer>();
 	public static Map<String, Integer> spawnmapz = new HashMap<String,Integer>();
-	
+	public static List<String> swears = Collections.synchronizedList(new ArrayList<String>());;
 	
     public void onEnable() {
         plugin = this;
@@ -50,7 +54,7 @@ public class Froggles extends JavaPlugin{
     }
    
     public void onDisable() {
-       
+       swearsaver();
     }
     public static void registerEvents(org.bukkit.plugin.Plugin plugin, Listener... listeners) {
         for (Listener listener : listeners) {
@@ -66,11 +70,22 @@ public class Froggles extends JavaPlugin{
 		config.options().copyDefaults(true);
 		saveConfig();
 		for(String str: getConfig().getKeys(true)) {
-
+			
+			 if(str.startsWith("message")){
 			String p = getConfig().getString(str);
-			 
 			configmap.put(str, p);
+			 }
 		}
+		for(String word: getConfig().getStringList("swears")){
+			swears.add(word);
+		}
+    }
+    
+    private void swearsaver(){
+    	FileConfiguration config = getConfig();
+    	config.set("swears", swears);
+		config.options().copyDefaults(true);
+		saveConfig();
     }
     
     private void commandini(){
@@ -117,6 +132,7 @@ public class Froggles extends JavaPlugin{
         getCommand("frogcommand").setExecutor(new frogcommand());
         getCommand("gamespawn").setExecutor(new spawns());
         getCommand("randomchest").setExecutor(new chest());
+        getCommand("chatfilter").setExecutor(new filter());
     }
    
    

@@ -29,7 +29,8 @@ public class filter implements CommandExecutor {
 					return true;
 				}
 				return false;
-			}else{
+			}
+			if(args[0].equalsIgnoreCase("remove")){
 				boolean allow = true;
 				if(sender instanceof Player){
 					Player player = (Player) sender;
@@ -46,31 +47,89 @@ public class filter implements CommandExecutor {
 				}
 				return false;
 			}
-		}else{
-			if(args[0].equalsIgnoreCase("list")){
+			if(args[0].equalsIgnoreCase("addmessage")){
 				boolean allow = true;
 				if(sender instanceof Player){
 					Player player = (Player) sender;
-					if(player.hasPermission("frog.filter.list")){
+					if(player.hasPermission("frog.filter.add")){
 						allow = true;
 					}else{
 						allow = false;
 					}
 				}
 				if(allow){
-					StringBuilder filtered = new StringBuilder();
-					for(String word:Froggles.swears){
-						filtered.append(word+", ");
-					}
-					sender.sendMessage(ChatColor.RED+"Chat Filter List:\n"+filtered.toString());
+					Froggles.swearmessage.add(args[1]);
+					sender.sendMessage(args[1] +" has been added to the message list.");
 					return true;
 				}
 				return false;
+			}
+			if(args[0].equalsIgnoreCase("removemessage")){
+				boolean allow = true;
+				if(sender instanceof Player){
+					Player player = (Player) sender;
+					if(player.hasPermission("frog.filter.remove")){
+						allow = true;
+					}else{
+						allow = false;
+					}
+				}
+				if(allow){
+					Froggles.swearmessage.remove(args[1]);
+					sender.sendMessage(args[1] +" has been removed to the message list.");
+					return true;
+				}
+				return false;
+			}
+		}else{
+			if(args.length == 1){
+				if(args[0].equalsIgnoreCase("list")){
+					boolean allow = true;
+					if(sender instanceof Player){
+						Player player = (Player) sender;
+						if(player.hasPermission("frog.filter.list")){
+							allow = true;
+						}else{
+							allow = false;
+						}
+					}
+					if(allow){
+						StringBuilder filtered = new StringBuilder();
+						for(String word:Froggles.swears){
+							filtered.append(word+", ");
+						}
+						sender.sendMessage(ChatColor.RED+"Chat Filter List:\n"+filtered.toString());
+						return true;
+					}
+					return false;
+				}
+				if(args[0].equalsIgnoreCase("listmessages")){
+					boolean allow = true;
+					if(sender instanceof Player){
+						Player player = (Player) sender;
+						if(player.hasPermission("frog.filter.list")){
+							allow = true;
+						}else{
+							allow = false;
+						}
+					}
+					if(allow){
+						StringBuilder filtered = new StringBuilder();
+						for(String word:Froggles.swearmessage){
+							filtered.append(word+"\n ");
+						}
+						sender.sendMessage(ChatColor.RED+"Chat Filter Message List:\n"+filtered.toString());
+						return true;
+					}
+					return false;
+				}
+				return false;
 			}else{
-				sender.sendMessage("Usage: /filter [add/remove/list] [word]");
+				sender.sendMessage("Usage: /filter [add/remove/list/addmessage/removemessage/listmessages] [word]");
 				return false;
 			}
 		}
+		return false;
 	}
 
 }

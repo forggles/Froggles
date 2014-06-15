@@ -44,7 +44,8 @@ public class Froggles extends JavaPlugin{
 	public static Map<String, Integer> spawnmapx = new HashMap<String,Integer>();
 	public static Map<String, Integer> spawnmapy = new HashMap<String,Integer>();
 	public static Map<String, Integer> spawnmapz = new HashMap<String,Integer>();
-	public static List<String> swears = Collections.synchronizedList(new ArrayList<String>());;
+	public static List<String> swears = Collections.synchronizedList(new ArrayList<String>());
+	public static List<String> swearmessage = Collections.synchronizedList(new ArrayList<String>());
 	
     public void onEnable() {
         plugin = this;
@@ -76,14 +77,18 @@ public class Froggles extends JavaPlugin{
 			configmap.put(str, p);
 			 }
 		}
-		for(String word: getConfig().getStringList("swears")){
+		for(String word: getConfig().getStringList("filter.swears")){
 			swears.add(word);
+		}
+		for(String word: getConfig().getStringList("filter.messages")){
+			swearmessage.add(word);
 		}
     }
     
     private void swearsaver(){
     	FileConfiguration config = getConfig();
-    	config.set("swears", swears);
+    	config.set("filter.swears", swears);
+    	config.set("filter.messages", swearmessage);
 		config.options().copyDefaults(true);
 		saveConfig();
     }

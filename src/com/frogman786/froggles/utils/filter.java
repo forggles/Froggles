@@ -21,14 +21,9 @@ public class filter {
 	}
 	
 	public static String nomessage(){
-		String[] mess = {"tone down that language",
-				"no swear swear",
-				"no swear swear, rudeness is bad",
-				"swearing is bad no swear swear",
-				"count to 10 and rethink what you said"};
 		Random rand = new Random();
-	    int randomNum = rand.nextInt((4 - 0) + 1) + 0;
-	    return mess[randomNum];
+	    int randomNum = rand.nextInt(((Froggles.swearmessage.size()-1) - 0) + 1) + 0;
+	    return Froggles.swearmessage.get(randomNum);
 	}
 	
 	public static void notify(Player player, String message){

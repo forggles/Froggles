@@ -21,23 +21,42 @@ message:
     all: '&aOnline players &c&online &f: &list'
     single: ''
     info: ''
-swears:
-  - pussy
-  - shit
-  - piss
-  - fuck
-  - cunt
-  - cock
-  - fucker
-  - tits
-  - turd
-  - twat
-  - bitch
-  - whore
-  - penis
-  - vagina
-  - dick
-  - yingjang
-  - gay
-  - homo
-  - anus
+    
+filter:
+  swears:
+    - pussy
+    - shit
+    - piss
+    - fuck
+    - cunt
+    - cock
+    - fucker
+    - tits
+    - turd
+    - twat
+    - bitch
+    - whore
+    - penis
+    - vagina
+    - dick
+    - yingjang
+    - gay
+    - homo
+    - anus
+    - gay
+    - bastard
+    - rkt
+    - fgt
+    - faggot
+    - fag
+    - fagot
+    - fagit
+    - faggit
+    - dik
+  messages:
+    - "tone down that language"
+    - "no swear swear"
+    - "no swear swear, rudeness is bad"
+    - "swearing is bad no swear swear"
+    - "count to 10 and rethink what you said"
+    

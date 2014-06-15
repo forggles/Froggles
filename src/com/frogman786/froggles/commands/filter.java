@@ -47,42 +47,8 @@ public class filter implements CommandExecutor {
 				}
 				return false;
 			}
-			if(args[0].equalsIgnoreCase("addmessage")){
-				boolean allow = true;
-				if(sender instanceof Player){
-					Player player = (Player) sender;
-					if(player.hasPermission("frog.filter.add")){
-						allow = true;
-					}else{
-						allow = false;
-					}
-				}
-				if(allow){
-					Froggles.swearmessage.add(args[1]);
-					sender.sendMessage(args[1] +" has been added to the message list.");
-					return true;
-				}
-				return false;
-			}
-			if(args[0].equalsIgnoreCase("removemessage")){
-				boolean allow = true;
-				if(sender instanceof Player){
-					Player player = (Player) sender;
-					if(player.hasPermission("frog.filter.remove")){
-						allow = true;
-					}else{
-						allow = false;
-					}
-				}
-				if(allow){
-					Froggles.swearmessage.remove(args[1]);
-					sender.sendMessage(args[1] +" has been removed to the message list.");
-					return true;
-				}
-				return false;
-			}
 		}else{
-			if(args.length == 1){
+			if(args.length >= 1){
 				if(args[0].equalsIgnoreCase("list")){
 					boolean allow = true;
 					if(sender instanceof Player){
@@ -123,7 +89,53 @@ public class filter implements CommandExecutor {
 					}
 					return false;
 				}
+				if(args[0].equalsIgnoreCase("addmessage")){
+					boolean allow = true;
+					if(sender instanceof Player){
+						Player player = (Player) sender;
+						if(player.hasPermission("frog.filter.add")){
+							allow = true;
+						}else{
+							allow = false;
+						}
+					}
+					if(allow){
+						StringBuilder message = new StringBuilder();
+						for(String word:args){
+							if(!(word.equalsIgnoreCase("addmessage"))){
+							message.append(word+" ");
+							}
+						}
+						Froggles.swearmessage.add(message.toString());
+						sender.sendMessage(message.toString() +" has been added to the message list.");
+						return true;
+					}
+					return false;
+				}
+				if(args[0].equalsIgnoreCase("removemessage")){
+					boolean allow = true;
+					if(sender instanceof Player){
+						Player player = (Player) sender;
+						if(player.hasPermission("frog.filter.remove")){
+							allow = true;
+						}else{
+							allow = false;
+						}
+					}
+					if(allow){
+						StringBuilder message = new StringBuilder();
+						for(String word:args){
+							if(!(word.equalsIgnoreCase("removemessage"))){
+							message.append(word+" ");
+							}
+						Froggles.swearmessage.remove(message.toString());
+						sender.sendMessage(message.toString() +" has been removed to the message list.");
+						return true;
+					}
+					return false;
+				}
 				return false;
+				}
 			}else{
 				sender.sendMessage("Usage: /filter [add/remove/list/addmessage/removemessage/listmessages] [word]");
 				return false;

@@ -19,6 +19,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 
 import com.frogman786.froggles.utils.Chat;
 import com.frogman786.froggles.utils.filter;
+import com.frogman786.froggles.utils.netherdoor;
 
 public class Events implements Listener {
 	@EventHandler (priority = EventPriority.LOWEST)
@@ -48,6 +49,15 @@ public class Events implements Listener {
 			if(Froggles.trackingmap.get(player.getName())){
 				Player tracked = com.frogman786.froggles.utils.Tracking.getNearest(player);
 				player.setCompassTarget(tracked.getLocation());
+			}
+		}
+		//TODO stub for netherdoor check
+		if(netherdoor.check(player)){
+			if(netherdoor.complete(player)){
+				
+			}else{
+				evt.setCancelled(true);
+				player.sendMessage(ChatColor.RED+"you need to finish the door before you can pass");
 			}
 		}
 	}

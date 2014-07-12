@@ -46,6 +46,7 @@ public class Froggles extends JavaPlugin{
 	public static Map<String, Integer> spawnmapz = new HashMap<String,Integer>();
 	public static List<String> swears = Collections.synchronizedList(new ArrayList<String>());
 	public static List<String> swearmessage = Collections.synchronizedList(new ArrayList<String>());
+	public static List<String> netherdoor = Collections.synchronizedList(new ArrayList<String>());
 	
     public void onEnable() {
         plugin = this;
@@ -82,6 +83,9 @@ public class Froggles extends JavaPlugin{
 		}
 		for(String word: getConfig().getStringList("filter.messages")){
 			swearmessage.add(word);
+		}
+		for(String word: getConfig().getStringList("netherdoor.positions")){
+			netherdoor.add(word);
 		}
     }
     
@@ -138,6 +142,7 @@ public class Froggles extends JavaPlugin{
         getCommand("gamespawn").setExecutor(new spawns());
         getCommand("randomchest").setExecutor(new chest());
         getCommand("chatfilter").setExecutor(new filter());
+        getCommand("runcheck").setExecutor(new com.frogman786.froggles.commands.runcheck());
     }
    
    

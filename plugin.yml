@@ -36,8 +36,6 @@ commands:
     description: used to make a sand layer for spleef
   cuboid:
     description: used to make a solid cuboid of any material
-  kick:
-    description: /kick command
   me:
     description: same as default but with colour
   pms:
@@ -65,7 +63,9 @@ commands:
   randomchest:
     description: for spawning random chests in survival games
   chatfilter:
-    description: for adding temporary words to the filter
+    description: standard command for the filter
+  runcheck:
+    description: for tommy
 permissions:
     frog.*:
         description: Gives access to all frog commands

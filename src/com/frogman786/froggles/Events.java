@@ -51,13 +51,15 @@ public class Events implements Listener {
 				player.setCompassTarget(tracked.getLocation());
 			}
 		}
-		//TODO stub for netherdoor check
+		Bukkit.broadcastMessage("move fire");
 		if(netherdoor.check(player)){
+			Bukkit.broadcastMessage("check pass");
 			if(netherdoor.complete(player)){
-				
+				Bukkit.broadcastMessage("complete passed");
 			}else{
 				evt.setCancelled(true);
 				player.sendMessage(ChatColor.RED+"you need to finish the door before you can pass");
+				player.teleport(new Location(player.getWorld(), player.getLocation().getX()-1, player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
 			}
 		}
 	}

@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,6 +18,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import com.frogman786.froggles.utils.Chat;
 import com.frogman786.froggles.utils.filter;
@@ -59,7 +62,15 @@ public class Events implements Listener {
 			}else{
 				evt.setCancelled(true);
 				player.sendMessage(ChatColor.RED+"you need to finish the door before you can pass");
-				player.teleport(new Location(player.getWorld(), player.getLocation().getX()-1, player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()));
+				Location backspace = player.getLocation();
+				Bukkit.broadcastMessage("location is" +backspace.toString());
+				backspace.setX(backspace.getX()-2);
+				Bukkit.broadcastMessage("changed to" + backspace.toString());
+				boolean tp = false;
+				Entity tplocation = player.getWorld().spawnEntity(backspace, EntityType.PIG_ZOMBIE);
+				tp = player.teleport(tplocation);
+				
+				Bukkit.broadcastMessage(""+tp);
 			}
 		}
 	}

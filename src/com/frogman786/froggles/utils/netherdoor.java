@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import com.frogman786.froggles.Froggles;
@@ -17,24 +16,11 @@ public class netherdoor {
 			int playerx = (int) p.getLocation().getX();
 			int playery = (int) p.getLocation().getY();
 			int playerz = (int) p.getLocation().getZ();
-			boolean doorIsX = false;
 			Location atdoor = parsedoor(word);
-			Block checkx = atdoor.add(3, 0, 0).getBlock();
-			if(checkx.getType() == Material.BEDROCK){
-				doorIsX = true;
-			}
 			if(playery <= (atdoor.getY()+2) && playery >= (atdoor.getY()-2)){
-				if(doorIsX){
-					if(playerz == atdoor.getZ()){
-						if(playerx <= (atdoor.getX()+2) && playerx >= (atdoor.getX()-2)){
-							return true;
-						}
-					}
-				}else{
-					if(playerx == atdoor.getX()){
-						if(playerz <= (atdoor.getZ()+2) && playerz >= (atdoor.getZ()-2)){
-							return true;
-						}
+				if(playerx == atdoor.getX()){
+					if(playerz <= (atdoor.getZ()+2) && playerz >= (atdoor.getZ()-2)){
+						return true;
 					}
 				}
 			}

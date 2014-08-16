@@ -66,6 +66,12 @@ commands:
     description: standard command for the filter
   runcheck:
     description: for tommy
+  fakequit:
+    description: faking a quit
+  fakejoin:
+    description: faking a join
+  randomtp:
+    description: for random tp within a range
 permissions:
     frog.*:
         description: Gives access to all frog commands

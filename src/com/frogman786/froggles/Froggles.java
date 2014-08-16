@@ -136,13 +136,19 @@ public class Froggles extends JavaPlugin{
         getCommand("announcepromo").setExecutor(new Announce());
         //automatic text formatting
         getCommand("rainbowtext").setExecutor(new rainbow());
-        //zombie protection
+        //implemented specifically for games
         getCommand("zombiesafety").setExecutor(new zombies());
-        getCommand("frogcommand").setExecutor(new frogcommand());
         getCommand("gamespawn").setExecutor(new spawns());
         getCommand("randomchest").setExecutor(new chest());
+        getCommand("randomtp").setExecutor(new com.frogman786.froggles.commands.RTP());
+        //
         getCommand("chatfilter").setExecutor(new filter());
+        //useless
         getCommand("runcheck").setExecutor(new com.frogman786.froggles.commands.runcheck());
+        getCommand("frogcommand").setExecutor(new frogcommand());
+        //fake join/quit message
+        getCommand("fakejoin").setExecutor(new com.frogman786.froggles.commands.fakes());
+        getCommand("fakequit").setExecutor(new com.frogman786.froggles.commands.fakes());
     }
    
    

@@ -11,7 +11,7 @@ import com.frogman786.froggles.utils.rTP;
 public class RTP implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-		if(args.length==5){
+		if(args.length==5||args.length==6){
 			//initilizing varibles
 			int x1 = 0;
 			int x2 = 0;
@@ -31,7 +31,9 @@ public class RTP implements CommandExecutor {
 				x2 = Integer.parseInt(args[2]);
 				y1 = Integer.parseInt(args[3]);
 				y2 = Integer.parseInt(args[4]);
+				if(args.length==6){
 				safey = Integer.parseInt(args[5]);
+				}
 			} catch (Exception NumberFormatException) {
 				sender.sendMessage("x1, x2, z1, z2, and y must be exact numbers");
 				return true;
@@ -43,7 +45,7 @@ public class RTP implements CommandExecutor {
 			return true;
 		}else{
 			//send usage message
-			sender.sendMessage(ChatColor.RED+"USAGE: /randomtp [player x1 x2 z1 z2 y]");
+			sender.sendMessage(ChatColor.RED+"USAGE: /randomtp [player x1 x2 z1 z2] (y)");
 			return true;
 		}
 	}

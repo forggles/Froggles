@@ -149,6 +149,8 @@ public class Froggles extends JavaPlugin{
         //fake join/quit message
         getCommand("fakejoin").setExecutor(new com.frogman786.froggles.commands.fakes());
         getCommand("fakequit").setExecutor(new com.frogman786.froggles.commands.fakes());
+        //moving away from betteralias to static commands
+        getCommand("clreff").setExecutor(new com.frogman786.froggles.commands.clear());
     }
    
    

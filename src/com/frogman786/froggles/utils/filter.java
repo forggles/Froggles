@@ -13,7 +13,7 @@ import com.frogman786.froggles.Froggles;
 public class filter {
 	public static boolean swears(String message){
 		for(String word:Froggles.swears){
-			if(message.toLowerCase().contains(word.toLowerCase())){
+			if(message.toLowerCase().replaceAll("[^a-zA-Z0-9\t]", "").contains(word.toLowerCase())){
 				return false;
 			}
 		}

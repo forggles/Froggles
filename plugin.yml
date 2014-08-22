@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.11
+version: 1.2.15
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -72,6 +72,9 @@ commands:
     description: faking a join
   randomtp:
     description: for random tp within a range
+  clreff:
+    description: used to clear potion effects
+    aliases: cleareffect
 permissions:
     frog.*:
         description: Gives access to all frog commands

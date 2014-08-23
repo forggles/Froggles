@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.15
+version: 1.2.16
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -75,6 +75,9 @@ commands:
   clreff:
     description: used to clear potion effects
     aliases: cleareffect
+  ranks:
+    description: for listing the avaliable ranks
+    aliases: rank
 permissions:
     frog.*:
         description: Gives access to all frog commands

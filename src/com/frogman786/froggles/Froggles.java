@@ -47,6 +47,7 @@ public class Froggles extends JavaPlugin{
 	public static List<String> swears = Collections.synchronizedList(new ArrayList<String>());
 	public static List<String> swearmessage = Collections.synchronizedList(new ArrayList<String>());
 	public static List<String> netherdoor = Collections.synchronizedList(new ArrayList<String>());
+	public static List<String> rankslist = Collections.synchronizedList(new ArrayList<String>());
 	
     public void onEnable() {
         plugin = this;
@@ -86,6 +87,9 @@ public class Froggles extends JavaPlugin{
 		}
 		for(String word: getConfig().getStringList("netherdoor.positions")){
 			netherdoor.add(word);
+		}
+		for(String word: getConfig().getStringList("ranks")){
+			rankslist.add(word);
 		}
     }
     
@@ -151,6 +155,7 @@ public class Froggles extends JavaPlugin{
         getCommand("fakequit").setExecutor(new com.frogman786.froggles.commands.fakes());
         //moving away from betteralias to static commands
         getCommand("clreff").setExecutor(new com.frogman786.froggles.commands.clear());
+        getCommand("ranks").setExecutor(new com.frogman786.froggles.commands.ranks());
     }
    
    

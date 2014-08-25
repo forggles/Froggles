@@ -15,7 +15,7 @@ public class PlayerHTMLformatted {
 			e.printStackTrace();
 		} 
 		for(Player listplayer:parry){
-			out.println("<div style=\"color:"+getTag(listplayer)+"\">"+listplayer.getName()+"</div>"+", ");
+			out.print("<div style=\"color:"+getTag(listplayer)+";font-size:18\">"+listplayer.getName()+"</div> ");
 		}
 		out.close();
 	}

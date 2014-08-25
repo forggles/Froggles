@@ -1,6 +1,6 @@
 name: Froggles
 description: a whole pile o'shite
-version: 1.2.16
+version: 1.2.21
 main: com.frogman786.froggles.Froggles
 depend: [Vault]
 commands:
@@ -78,6 +78,9 @@ commands:
   ranks:
     description: for listing the avaliable ranks
     aliases: rank
+  switchtp:
+    description: for switch two players around
+    aliases: stp
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -98,6 +101,7 @@ permissions:
             frog.gamespawn: true
             frog.filter.*: true
             frog.chests: true
+            frog.tp.*: true
         default: op
     frog.time.*:
         children:
@@ -159,6 +163,11 @@ permissions:
             frog.filter.add: true
             frog.filter.remove: true
             frog.filter.list: true
+        default: false
+    frog.tp.*:
+        children:
+            frog.tp.switch: true
+            frog.tp.random: true
         default: false
 
     frog.time.dawn:
@@ -277,4 +286,11 @@ permissions:
         
     frog.chests:
         description: for random chests
+        default: false
+    
+    frog.tp.switch:
+        description: for switching players
+        default: false
+    frog.tp.random:
+        description: randomtp permission
         default: false

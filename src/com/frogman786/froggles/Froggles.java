@@ -11,6 +11,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import com.frogman786.froggles.commands.Announce;
 import com.frogman786.froggles.commands.cfg;
@@ -30,6 +31,7 @@ import com.frogman786.froggles.commands.me;
 import com.frogman786.froggles.commands.zombies;
 import com.frogman786.froggles.commands.frogcommand;
 import com.frogman786.froggles.commands.spawns;
+import com.frogman786.froggles.utils.PlayerHTMLformatted;
  
 public class Froggles extends JavaPlugin{
    
@@ -54,6 +56,13 @@ public class Froggles extends JavaPlugin{
         registerEvents(this, new Events());
         configini();
         commandini();
+        BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
+        scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
+            @Override
+            public void run() {
+                PlayerHTMLformatted.refreshList(Bukkit.getOnlinePlayers());
+            }
+        }, 0L, 1200L);
     }
    
     public void onDisable() {
@@ -145,6 +154,7 @@ public class Froggles extends JavaPlugin{
         getCommand("gamespawn").setExecutor(new spawns());
         getCommand("randomchest").setExecutor(new chest());
         getCommand("randomtp").setExecutor(new com.frogman786.froggles.commands.RTP());
+        getCommand("switchtp").setExecutor(new com.frogman786.froggles.commands.stp());
         //
         getCommand("chatfilter").setExecutor(new filter());
         //useless

@@ -156,6 +156,7 @@ public class Froggles extends JavaPlugin{
         //moving away from betteralias to static commands
         getCommand("clreff").setExecutor(new com.frogman786.froggles.commands.clear());
         getCommand("ranks").setExecutor(new com.frogman786.froggles.commands.ranks());
+        //TODO wait for json parsing, getCommand("rules").setExecutor(new com.frogman786.froggles.commands.rules());
     }
    
    

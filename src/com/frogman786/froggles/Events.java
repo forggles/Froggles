@@ -20,6 +20,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import com.frogman786.froggles.utils.Chat;
+import com.frogman786.froggles.utils.PlayerHTMLformatted;
 import com.frogman786.froggles.utils.filter;
 import com.frogman786.froggles.utils.netherdoor;
 
@@ -82,6 +83,7 @@ public class Events implements Listener {
 	    if(Bukkit.getOnlinePlayers().length == 1){
 	    	plural = " player";
 	    }
+	    PlayerHTMLformatted.refreshList(Bukkit.getOnlinePlayers());
 	    evt.setJoinMessage(colour + player.getName() + ChatColor.WHITE + " logged in, making " + ChatColor.RED + Bukkit.getOnlinePlayers().length + ChatColor.GREEN + plural);
 	}
 	
@@ -94,6 +96,7 @@ public class Events implements Listener {
 	    if(Bukkit.getOnlinePlayers().length-1 == 1){
 	    	plural = " player";
 	    }
+	    PlayerHTMLformatted.refreshList(Bukkit.getOnlinePlayers());
 	    evt.setQuitMessage(colour + player.getName() + ChatColor.WHITE + " quit, " + ChatColor.RED + (Bukkit.getOnlinePlayers().length - 1) + ChatColor.GREEN + plural + ChatColor.WHITE + " left");
 	}
 	

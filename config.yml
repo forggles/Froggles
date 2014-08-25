@@ -24,39 +24,51 @@ message:
     
 filter:
   swears:
-    - pussy
-    - shit
-    - piss
-    - fuck
-    - cunt
-    - cock
-    - fucker
-    - tits
-    - turd
-    - twat
-    - bitch
-    - whore
-    - penis
-    - vagina
-    - dick
-    - yingjang
-    - gay
-    - homo
-    - anus
-    - gay
-    - bastard
-    - rkt
-    - fgt
-    - faggot
-    - fag
-    - fagot
-    - fagit
-    - faggit
-    - dik
+  - pussy
+  - shit
+  - piss
+  - fuck
+  - cunt
+  - cock
+  - fucker
+  - tits
+  - turd
+  - twat
+  - bitch
+  - whore
+  - penis
+  - vagina
+  - dick
+  - yingjang
+  - gay
+  - homo
+  - anus
+  - gay
+  - bastard
+  - rkt
+  - fgt
+  - faggot
+  - fag
+  - fagot
+  - fagit
+  - faggit
+  - dik
+  - porn
+  - porno
+  - pornography
+  - ironminer12
+  - feck
+  - cum
+  - retard
+  - faq
+  - rekt
   messages:
     - "tone down that language"
     - "no swear swear"
     - "no swear swear, rudeness is bad"
     - "swearing is bad no swear swear"
     - "count to 10 and rethink what you said"
+ranks:
+  - "&fAvaliable ranks are &ePlayer&f, &1Gamer&f, &6Builder&f, &1Gamer&f/&6Builder&f, &6Builder&2+&f, &2Gamerunner&f, &cMod"
+  - "&fAvaliable extras are Voxel Lite, Voxel Sniper, WorldEdit, Command blocks"
     

@@ -22,8 +22,8 @@ message:
     single: ''
     info: ''
 colours:
-  beforeid: "<span id:"
-  afterid: ">"
+  beforeid: "<span class:\""
+  afterid: "\">"
   aftername: "</span>"
   black: black
   dark_blue: dark_blue

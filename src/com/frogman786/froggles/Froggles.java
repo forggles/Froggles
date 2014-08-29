@@ -108,6 +108,7 @@ public class Froggles extends JavaPlugin{
     }
     
     private void swearsaver(){
+    	plugin.reloadConfig();
     	FileConfiguration config = getConfig();
     	config.set("filter.swears", swears);
     	config.set("filter.messages", swearmessage);

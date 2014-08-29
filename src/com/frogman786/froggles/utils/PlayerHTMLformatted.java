@@ -3,6 +3,7 @@ package com.frogman786.froggles.utils;
 import java.io.*;
 
 import org.bukkit.entity.Player;
+import com.frogman786.froggles.Froggles;
 
 public class PlayerHTMLformatted {
 
@@ -15,7 +16,7 @@ public class PlayerHTMLformatted {
 			e.printStackTrace();
 		} 
 		for(Player listplayer:parry){
-			out.print("<div style=\"color:"+getTag(listplayer)+";font-size:18\">"+listplayer.getName()+"</div> ");
+			out.print(Froggles.colourmap.get("colours.beforeid")+getTag(listplayer)+Froggles.colourmap.get("colours.afterid")+listplayer.getName()+Froggles.colourmap.get("colours.aftername"));
 		}
 		out.close();
 	}
@@ -23,51 +24,51 @@ public class PlayerHTMLformatted {
 	private static String getTag(Player p) {
 		//checking colour perms
 		if(p.hasPermission("nametags.color.black")){
-			return "#0000";
+			return Froggles.colourmap.get("colours.black");
 		}else{
 			if(p.hasPermission("nametags.color.dark_blue")){
-				return "#00002A";
+				return Froggles.colourmap.get("colours.dark_blue");
 			}else{
 				if(p.hasPermission("nametags.color.dark_green")){
-					return "#002A00";
+					return Froggles.colourmap.get("colours.dark_green");
 				}else{
 					if(p.hasPermission("nametags.color.dark_aqua")){
-						return "#002A2A";
+						return Froggles.colourmap.get("colours.dark_aqua");
 					}else{
 						if(p.hasPermission("nametags.color.dark_red")){
-							return "#2A0000";
+							return Froggles.colourmap.get("colours.dark_red");
 						}else{
 							if(p.hasPermission("nametags.color.dark_purple")){
-								return "#2A002A";
+								return Froggles.colourmap.get("colours.dark_purple");
 							}else{
 								if(p.hasPermission("nametags.color.gold")){
-									return "#2A2A00";
+									return Froggles.colourmap.get("colours.gold");
 								}else{
 									if(p.hasPermission("nametags.color.gray")){
-										return "#2A2A2A";
+										return Froggles.colourmap.get("colours.gray");
 									}else{
 										if(p.hasPermission("nametags.color.dark_gray")){
-											return "#151515";
+											return Froggles.colourmap.get("colours.dark_gray");
 										}else{
 											if(p.hasPermission("nametags.color.blue")){
-												return "#15153F";
+												return Froggles.colourmap.get("colours.blue");
 											}else{
 												if(p.hasPermission("nametags.color.green")){
-													return "#153F15";
+													return Froggles.colourmap.get("colours.green");
 												}else{
 													if(p.hasPermission("nametags.color.aqua")){
-														return "#153F3F";
+														return Froggles.colourmap.get("colours.aqua");
 													}else{
 														if(p.hasPermission("nametags.color.red")){
-															return "#3F1515";
+															return Froggles.colourmap.get("colours.red");
 														}else{
 															if(p.hasPermission("nametags.color.light_purple")){
-																return "#3F153F";
+																return Froggles.colourmap.get("colours.light_purple");
 															}else{
 																if(p.hasPermission("nametags.color.white")){
-																	return "#3F3F3F";
+																	return Froggles.colourmap.get("colours.white");
 																}else{
-																	return "#FFFF55";
+																	return Froggles.colourmap.get("colours.yellow");
 																}
 															}
 														}

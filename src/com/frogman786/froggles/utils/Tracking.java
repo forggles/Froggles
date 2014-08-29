@@ -8,7 +8,7 @@ public class Tracking {
 		double closest = Double.MAX_VALUE;
 		Player closestp = null;
 		for(Player i : Bukkit.getOnlinePlayers()){
-			if(!(i.isSneaking()) && i!=p){ // TODO add a hashmap config check on this one so sneaking can be enabled/disabled
+			if(!(i.isSneaking()) && i!=p){
 			double dist = i.getLocation().distance(p.getPlayer().getLocation());
 				if (closest == Double.MAX_VALUE || dist < closest){
 					closest = dist;
@@ -26,7 +26,7 @@ public class Tracking {
 	public static double getNearestDistance(Player p){
 		double closest = Double.MAX_VALUE;
 		for(Player i : Bukkit.getOnlinePlayers()){
-			if(!(i.isSneaking()) && i!=p){ // TODO add a hashmap config check on this one so sneaking can be enabled/disabled
+			if(!(i.isSneaking()) && i!=p){
 			double dist = i.getLocation().distance(p.getPlayer().getLocation());
 				if (closest == Double.MAX_VALUE || dist < closest){
 					closest = dist;

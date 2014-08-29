@@ -20,7 +20,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import com.frogman786.froggles.utils.Chat;
-import com.frogman786.froggles.utils.PlayerHTMLformatted;
 import com.frogman786.froggles.utils.filter;
 import com.frogman786.froggles.utils.netherdoor;
 
@@ -55,24 +54,24 @@ public class Events implements Listener {
 			}
 		}
 		//Bukkit.broadcastMessage("move fire");
-		if(netherdoor.check(player)){
+		//if(netherdoor.check(player)){
 			//Bukkit.broadcastMessage("check pass");
-			if(netherdoor.complete(player)){
+			//if(netherdoor.complete(player)){
 				//Bukkit.broadcastMessage("complete passed");
-			}else{
-				evt.setCancelled(true);
-				player.sendMessage(ChatColor.RED+"you need to finish the door before you can pass");
-				Location backspace = player.getLocation();
+			//}else{
+				//evt.setCancelled(true);
+				//player.sendMessage(ChatColor.RED+"you need to finish the door before you can pass");
+				//Location backspace = player.getLocation();
 				//Bukkit.broadcastMessage("location is" +backspace.toString());
-				backspace.setX(backspace.getX()-2);
+				//backspace.setX(backspace.getX()-2);
 				//Bukkit.broadcastMessage("changed to" + backspace.toString());
-				boolean tp = false;
-				Entity tplocation = player.getWorld().spawnEntity(backspace, EntityType.PIG_ZOMBIE);
-				tp = player.teleport(tplocation);
+				//boolean tp = false;
+				//Entity tplocation = player.getWorld().spawnEntity(backspace, EntityType.PIG_ZOMBIE);
+				//tp = player.teleport(tplocation);
 				
 				//Bukkit.broadcastMessage(""+tp);
-			}
-		}
+			//}
+		//}
 	}
 	
 	@EventHandler

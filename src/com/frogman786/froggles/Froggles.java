@@ -40,6 +40,7 @@ public class Froggles extends JavaPlugin{
     public static Map<String, String> configmap = new HashMap<String, String>();
     public static Map<String,Boolean> trackingmap = new HashMap<String, Boolean>();
     public static Map<String,Boolean> rainbowmap = new HashMap<String, Boolean>();
+    public static Map<String,String> colourmap = new HashMap<String, String>();
     public static String[] bannedblocks = {"AIR"};
 	public static boolean zom_vill_safe = false;
 	public static boolean frogcommand = false;
@@ -87,6 +88,10 @@ public class Froggles extends JavaPlugin{
 			String p = getConfig().getString(str);
 			configmap.put(str, p);
 			 }
+			 if(str.startsWith("colour")){
+					String p = getConfig().getString(str);
+					colourmap.put(str, p);
+					 }
 		}
 		for(String word: getConfig().getStringList("filter.swears")){
 			swears.add(word);

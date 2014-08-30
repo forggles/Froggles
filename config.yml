@@ -22,7 +22,7 @@ message:
     single: ''
     info: ''
 colours:
-  beforeid: "<span class:\""
+  beforeid: "<span class=\""
   afterid: "\">"
   aftername: "</span>"
   black: black

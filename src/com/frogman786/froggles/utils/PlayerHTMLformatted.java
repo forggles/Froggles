@@ -1,14 +1,19 @@
 package com.frogman786.froggles.utils;
 
 import java.io.*;
+import java.util.Collection;
 
 import org.bukkit.entity.Player;
+import org.kitteh.vanish.VanishCheck;
+import org.kitteh.vanish.VanishManager;
+
 import com.frogman786.froggles.Froggles;
 
+@SuppressWarnings("unused")
 public class PlayerHTMLformatted {
 
 	private static String location = "plugins/Froggles/online.txt";
-	public static void refreshList(Player[] parry){
+	public static void refreshList(Collection<? extends Player> parry){
 		PrintWriter out = null;
 		try {
 			out = new PrintWriter(new FileWriter(location));
@@ -16,7 +21,11 @@ public class PlayerHTMLformatted {
 			e.printStackTrace();
 		} 
 		for(Player listplayer:parry){
+			if(false){//VanishManager.isVanished(listplayer)){
+				
+			}else{
 			out.print(Froggles.colourmap.get("colours.beforeid")+getTag(listplayer)+Froggles.colourmap.get("colours.afterid")+listplayer.getName()+Froggles.colourmap.get("colours.aftername"));
+			}
 		}
 		out.close();
 	}

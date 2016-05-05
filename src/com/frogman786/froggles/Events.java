@@ -4,24 +4,39 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+//import org.bukkit.entity.Entity;
+//import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+//import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.metadata.MetadataValue;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.util.Vector;
 
 import com.frogman786.froggles.utils.Chat;
+import com.frogman786.froggles.utils.VelocityUtil;
 import com.frogman786.froggles.utils.filter;
-import com.frogman786.froggles.utils.netherdoor;
+import com.frogman786.froggles.utils.voxelarrowhelper;
+//import com.frogman786.froggles.utils.netherdoor;
 
 public class Events implements Listener {
 	@EventHandler (priority = EventPriority.LOWEST)
@@ -53,6 +68,9 @@ public class Events implements Listener {
 				player.setCompassTarget(tracked.getLocation());
 			}
 		}
+		if(Froggles.freezemap.containsKey(player.getName())){
+			evt.setCancelled(true);
+		}
 		//Bukkit.broadcastMessage("move fire");
 		//if(netherdoor.check(player)){
 			//Bukkit.broadcastMessage("check pass");
@@ -79,11 +97,11 @@ public class Events implements Listener {
 	    Player player = evt.getPlayer();
 	    Enum<?> colour = Chat.getRankColour(player);
 	    String plural = " players";
-	    if(Bukkit.getOnlinePlayers().length == 1){
+	    if(Bukkit.getOnlinePlayers().size() == 1){
 	    	plural = " player";
 	    }
 	    
-	    evt.setJoinMessage(colour + player.getName() + ChatColor.WHITE + " logged in, making " + ChatColor.RED + Bukkit.getOnlinePlayers().length + ChatColor.GREEN + plural);
+	    evt.setJoinMessage(colour + player.getName() + ChatColor.WHITE + " logged in, making " + ChatColor.RED + Bukkit.getOnlinePlayers().size() + ChatColor.GREEN + plural);
 	}
 	
 	
@@ -92,11 +110,11 @@ public class Events implements Listener {
 	    Player player = evt.getPlayer();
 	    Enum<?> colour = Chat.getRankColour(player);
 	    String plural = " players";
-	    if(Bukkit.getOnlinePlayers().length-1 == 1){
+	    if(Bukkit.getOnlinePlayers().size()-1 == 1){
 	    	plural = " player";
 	    }
 	    
-	    evt.setQuitMessage(colour + player.getName() + ChatColor.WHITE + " quit, " + ChatColor.RED + (Bukkit.getOnlinePlayers().length - 1) + ChatColor.GREEN + plural + ChatColor.WHITE + " left");
+	    evt.setQuitMessage(colour + player.getName() + ChatColor.WHITE + " quit, " + ChatColor.RED + (Bukkit.getOnlinePlayers().size() - 1) + ChatColor.GREEN + plural + ChatColor.WHITE + " left");
 	}
 	
 	
@@ -120,14 +138,14 @@ public class Events implements Listener {
 			//evt.setCancelled(true);
 		}
 	}
-	@EventHandler
-	public void onZombieSight(EntityTargetLivingEntityEvent evt){
-		String seen = evt.getTarget().toString();
-		String saw = evt.getEntityType().toString();
-		if(Froggles.zom_vill_safe==true&&seen=="CraftVillager"&&saw=="ZOMBIE"){
-			evt.setCancelled(true);
-		}
-	}
+	//@EventHandler
+	//public void onZombieSight(EntityTargetLivingEntityEvent evt){
+	//	String seen = evt.getTarget().toString();
+	//	String saw = evt.getEntityType().toString();
+	//	if(Froggles.zom_vill_safe==true&&seen=="CraftVillager"&&saw=="ZOMBIE"){
+	//		evt.setCancelled(true);
+	//	}
+	//}
 	
 	@EventHandler
 	public void onRespawn(PlayerRespawnEvent evt){
@@ -139,6 +157,52 @@ public class Events implements Listener {
 			int z = Froggles.spawnmapz.get(playern);
 			World world = player.getWorld();
 			evt.setRespawnLocation(new Location(world,x,y,z));
+		}
+	}
+	
+	@EventHandler
+	public void arrowshoot(EntityShootBowEvent evt){
+		if(evt.getEntity() instanceof Player){
+			Player p = (Player) evt.getEntity();
+			String pn = p.getDisplayName().toLowerCase();
+			if(Froggles.bouncingbullets.contains(pn)){
+				Projectile pro = (Arrow) evt.getProjectile();
+				pro.setCustomName("bullet"+ p.getDisplayName());
+			}
+			if(Froggles.voxelbullets.contains(pn)){
+				Projectile pro = (Arrow) evt.getProjectile();
+				pro.setCustomName("voxel");
+			}
+			if(Froggles.rodeobullets.contains(pn)){
+				Projectile pro = (Arrow) evt.getProjectile();
+				Entity ball = pro.getWorld().spawnEntity(pro.getLocation(), EntityType.SNOWBALL);
+				ball.setVelocity(pro.getVelocity());
+				ball.setPassenger(p);
+				pro.remove();
+			}
+		}
+	}
+	
+	@EventHandler
+	public void arrowhit(ProjectileHitEvent evt){
+		try {
+			String bulletname = evt.getEntity().getCustomName();
+			if(bulletname.startsWith("bullet")){
+				Projectile pro = evt.getEntity();
+				Location currentlocation = pro.getLocation();
+				Location returnlocation = Bukkit.getPlayer(pro.getCustomName().substring(6)).getLocation();
+				Vector v = VelocityUtil.twopoints(currentlocation,returnlocation);
+				currentlocation.getWorld().spawnArrow(currentlocation, v, (float) 3, (float) 0);
+				pro.remove();
+			}
+			if(bulletname.startsWith("voxel")){
+				Projectile pro = evt.getEntity();
+				Location currentlocation = pro.getLocation();
+				voxelarrowhelper.toglass(currentlocation, 3);
+				pro.remove();
+			}
+		} catch (NullPointerException nu) {
+			//do nothin'
 		}
 	}
 }

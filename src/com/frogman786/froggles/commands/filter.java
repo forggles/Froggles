@@ -10,7 +10,6 @@ import com.frogman786.froggles.Froggles;
 
 public class filter implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl,String[] args) {
 		if(args.length==2){
 			if(args[0].equalsIgnoreCase("add")){

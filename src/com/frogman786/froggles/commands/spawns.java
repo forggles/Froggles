@@ -10,7 +10,6 @@ import com.frogman786.froggles.Froggles;
 
 public class spawns implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl,String[] args) {
 		boolean allow = false;
 		if(sender instanceof Player){

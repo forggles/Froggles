@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/mitch/Downloads/Bukkit/target/bukkit-1.8.8-R0.1-SNAPSHOT-shaded.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/bukkit/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/workspace/java/worldguard.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/VanishNoPacket.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

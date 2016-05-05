@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 
 public class runcheck implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2,String[] args) {
 		if(args.length == 2){
 			int x = Integer.parseInt(args[0]);

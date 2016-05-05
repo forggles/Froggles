@@ -1,5 +1,7 @@
 package com.frogman786.froggles.commands;
 
+import java.util.Collection;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,7 +16,7 @@ public class who implements CommandExecutor {
 			Player player = (Player) sender;
 			if(args.length == 0 && player.hasPermission("frog.who.who")){
 				StringBuilder online = new StringBuilder();
-				Player[] players = Bukkit.getOnlinePlayers();
+				Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 				for(Player listplayer : players){
 					// If a player is hidden from the sender don't show them in the list
 					if(sender instanceof Player && !((Player) sender).canSee(listplayer))
@@ -24,13 +26,13 @@ public class who implements CommandExecutor {
 						}	 
 						online.append(listplayer.getDisplayName());
 					}
-					sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.length + ChatColor.WHITE + " : " + online.toString());
+					sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.size() + ChatColor.WHITE + " : " + online.toString());
 					return true;
 				}else{
 					if(args.length == 1){
 						if(args[0].equalsIgnoreCase("info") && player.hasPermission("frog.who.info")){
 							StringBuilder infoonline = new StringBuilder();
-							Player[] players = Bukkit.getOnlinePlayers();
+							Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 							for(Player listplayer : players){
 								// If a player is hidden from the sender don't show them in the list
 								if(sender instanceof Player && !((Player) sender).canSee(listplayer))
@@ -44,12 +46,12 @@ public class who implements CommandExecutor {
 									infoonline.append(listplayer.getDisplayName() + ChatColor.WHITE + ", world: " + listplayer.getWorld().getName() + ", Location: " + x+","+y+","+z);
 									
 								}
-								sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.length + ChatColor.WHITE + " :\n" + infoonline.toString());
+								sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.size() + ChatColor.WHITE + " :\n" + infoonline.toString());
 								return true;
 						}else{
 							if(args[0].equalsIgnoreCase("*") && player.hasPermission("frog.who.world")){
 								StringBuilder online = new StringBuilder();
-								Player[] players = Bukkit.getOnlinePlayers();
+								Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 								for(Player listplayer : players){
 									// If a player is hidden from the sender don't show them in the list
 									if(sender instanceof Player && !((Player) sender).canSee(listplayer))
@@ -59,7 +61,7 @@ public class who implements CommandExecutor {
 										}	 
 											online.append(listplayer.getDisplayName() +ChatColor.WHITE+"["+listplayer.getWorld().getName()+"]");
 										}
-										sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.length + ChatColor.WHITE + " : " + online.toString());
+										sender.sendMessage(ChatColor.GREEN +"Online players " + ChatColor.RED + players.size() + ChatColor.WHITE + " : " + online.toString());
 										return true;
 							}else{
 								player.sendMessage(ChatColor.RED + "You do not have permission to use this command!");

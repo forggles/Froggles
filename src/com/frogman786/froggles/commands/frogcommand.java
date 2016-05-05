@@ -8,7 +8,6 @@ import com.frogman786.froggles.Froggles;
 
 public class frogcommand implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,String[] args) {
 		if(args.length>0){
 			if(args[0].equalsIgnoreCase("test")){

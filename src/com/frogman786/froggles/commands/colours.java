@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 
 public class colours implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2,String[] arg3) {
 			sender.sendMessage(ChatColor.BLUE + "-----" + ChatColor.DARK_GREEN + " Minecraft Text Colour Codes " + ChatColor.BLUE + "----");
 			sender.sendMessage(ChatColor.WHITE + "-0 = " + ChatColor.BLACK + "BLACK");

@@ -2,7 +2,7 @@ name: Froggles
 description: a whole pile o'shite
 version: 1.2.23
 main: com.frogman786.froggles.Froggles
-depend: [Vault]
+depend: []
 commands:
   pmsdebug:
     description: pms reply debug command
@@ -81,6 +81,18 @@ commands:
   switchtp:
     description: for switch two players around
     aliases: stp
+  freeze:
+    description: no
+  unfreeze:
+    description: no
+  throw:
+    description: throws people
+  bouncingbullets:
+    description: makes bullets bounce
+  rodeobullets:
+    description: makes bullets bulls
+  voxelbullets:
+    description: makes bullets voxely
 permissions:
     frog.*:
         description: Gives access to all frog commands
@@ -102,6 +114,8 @@ permissions:
             frog.filter.*: true
             frog.chests: true
             frog.tp.*: true
+            frog.throw: true
+            frog.bullets.*: true
         default: op
     frog.time.*:
         children:
@@ -168,6 +182,12 @@ permissions:
         children:
             frog.tp.switch: true
             frog.tp.random: true
+        default: false
+    frog.bullets.*:
+        children:
+            frog.bullets.bouncing: true
+            frog.bullets.rodeo: true
+            frog.bullets.voxel: true
         default: false
 
     frog.time.dawn:
@@ -287,10 +307,21 @@ permissions:
     frog.chests:
         description: for random chests
         default: false
-    
     frog.tp.switch:
         description: for switching players
         default: false
     frog.tp.random:
         description: randomtp permission
+        default: false
+    frog.throw:
+        description: throw people
+        default: false
+    frog.bullets.bouncing:
+        description: makes bullets bounce
+        default: false
+    frog.bullets.rodeo:
+        description: makes bullets bulls
+        default: false
+    frog.bullets.voxel:
+        description: makes bullets voxely
         default: false

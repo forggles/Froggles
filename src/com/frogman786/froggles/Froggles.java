@@ -41,6 +41,7 @@ public class Froggles extends JavaPlugin{
     public static Map<String,Boolean> trackingmap = new HashMap<String, Boolean>();
     public static Map<String,Boolean> rainbowmap = new HashMap<String, Boolean>();
     public static Map<String,String> colourmap = new HashMap<String, String>();
+    public static Map<String,String> freezemap = new HashMap<String, String>();
     public static String[] bannedblocks = {"AIR"};
 	public static boolean zom_vill_safe = false;
 	public static boolean frogcommand = false;
@@ -51,6 +52,10 @@ public class Froggles extends JavaPlugin{
 	public static List<String> swearmessage = Collections.synchronizedList(new ArrayList<String>());
 	public static List<String> netherdoor = Collections.synchronizedList(new ArrayList<String>());
 	public static List<String> rankslist = Collections.synchronizedList(new ArrayList<String>());
+	public static double gravity = 0.32;
+	public static List<String> bouncingbullets = Collections.synchronizedList(new ArrayList<String>());
+	public static List<String> rodeobullets = Collections.synchronizedList(new ArrayList<String>());
+	public static List<String> voxelbullets = Collections.synchronizedList(new ArrayList<String>());
 	
     public void onEnable() {
         plugin = this;
@@ -59,7 +64,6 @@ public class Froggles extends JavaPlugin{
         commandini();
         BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
-            @Override
             public void run() {
                 PlayerHTMLformatted.refreshList(Bukkit.getOnlinePlayers());
             }
@@ -172,6 +176,12 @@ public class Froggles extends JavaPlugin{
         //moving away from betteralias to static commands
         getCommand("clreff").setExecutor(new com.frogman786.froggles.commands.clear());
         getCommand("ranks").setExecutor(new com.frogman786.froggles.commands.ranks());
+        getCommand("freeze").setExecutor(new com.frogman786.froggles.commands.freeze());
+        getCommand("unfreeze").setExecutor(new com.frogman786.froggles.commands.freeze());
+        getCommand("throw").setExecutor(new com.frogman786.froggles.commands.launcher());
+        getCommand("bouncingbullets").setExecutor(new com.frogman786.froggles.commands.bbcommand());
+        getCommand("rodeobullets").setExecutor(new com.frogman786.froggles.commands.rbcommand());
+        getCommand("voxelbullets").setExecutor(new com.frogman786.froggles.commands.vbcommand());
         //TODO wait for json parsing, getCommand("rules").setExecutor(new com.frogman786.froggles.commands.rules());
     }
    

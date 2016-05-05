@@ -12,25 +12,24 @@ import com.frogman786.froggles.utils.Chat;
 
 public class fakes implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String lbl,String[] args) {
 		if(lbl.equalsIgnoreCase("fakejoin")){
 			    Player player = Bukkit.getPlayer(args[0]);
 			    Enum<?> colour = Chat.getRankColour(player);
 			    String plural = " players";
-			    if(Bukkit.getOnlinePlayers().length == 1){
+			    if(Bukkit.getOnlinePlayers().size() == 1){
 			    	plural = " player";
 			    }
-			    Bukkit.broadcastMessage(colour + player.getName() + ChatColor.WHITE + " logged in, making " + ChatColor.RED + Bukkit.getOnlinePlayers().length + ChatColor.GREEN + plural);
+			    Bukkit.broadcastMessage(colour + player.getName() + ChatColor.WHITE + " logged in, making " + ChatColor.RED + Bukkit.getOnlinePlayers().size() + ChatColor.GREEN + plural);
 			return true;
 		}else{
 			Player player = Bukkit.getPlayer(args[0]);
 		    Enum<?> colour = Chat.getRankColour(player);
 		    String plural = " players";
-		    if(Bukkit.getOnlinePlayers().length-1 == 1){
+		    if(Bukkit.getOnlinePlayers().size()-1 == 1){
 		    	plural = " player";
 		    }
-		    Bukkit.broadcastMessage(colour + player.getName() + ChatColor.WHITE + " quit, " + ChatColor.RED + (Bukkit.getOnlinePlayers().length - 1) + ChatColor.GREEN + plural + ChatColor.WHITE + " left");
+		    Bukkit.broadcastMessage(colour + player.getName() + ChatColor.WHITE + " quit, " + ChatColor.RED + (Bukkit.getOnlinePlayers().size() - 1) + ChatColor.GREEN + plural + ChatColor.WHITE + " left");
 			return true;
 		}
 	}

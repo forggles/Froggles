@@ -11,7 +11,6 @@ import com.frogman786.froggles.utils.Chat;
 
 public class Announce implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command command,String label, String[] args) {
 		if(label.equalsIgnoreCase("announce")){
 			if(args.length >= 1){

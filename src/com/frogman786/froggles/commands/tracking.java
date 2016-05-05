@@ -10,7 +10,6 @@ import com.frogman786.froggles.utils.Tracking;
 
 public class tracking implements CommandExecutor{
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command command,String label, String[] args) {
 		if(label.equalsIgnoreCase("track")){
 			if(sender instanceof Player){

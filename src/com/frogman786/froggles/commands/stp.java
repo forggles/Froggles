@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 
 public class stp implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] args) {
 		boolean allow = false;
 		if(sender instanceof Player){

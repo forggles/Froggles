@@ -9,7 +9,6 @@ import com.frogman786.froggles.utils.Chat;
 
 public class ranks implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] arg3) {
 		//import strings
 		StringBuilder messagebuilder = new StringBuilder();

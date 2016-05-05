@@ -10,7 +10,6 @@ import com.frogman786.froggles.Froggles;
 
 public class zombies implements CommandExecutor {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if(sender instanceof Player){

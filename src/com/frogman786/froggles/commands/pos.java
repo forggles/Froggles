@@ -1,6 +1,7 @@
 package com.frogman786.froggles.commands;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,6 +12,16 @@ public class pos implements CommandExecutor {
 		if(sender instanceof Player){
 			Player player = (Player) sender;
 			if(player.hasPermission("frog.pos.self")){
+				if(args.length!=0){
+					if(args[0].equalsIgnoreCase("exact")){
+						Location loc = player.getLocation();
+						player.sendMessage(loc.toString());
+						return true;
+					}else{
+						player.sendMessage("USAGE: /pos or /pos exact");
+						return true;
+					}
+				}
 				int x = (int) player.getLocation().getX();
 				int y = (int) player.getLocation().getY();
 				int z = (int) player.getLocation().getZ();

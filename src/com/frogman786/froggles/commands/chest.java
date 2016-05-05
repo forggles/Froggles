@@ -15,7 +15,6 @@ import com.frogman786.froggles.utils.rChest;
 
 public class chest implements CommandExecutor  {
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl,String[] args) {
 		// for checking player or console etc.
 		boolean allow = true;
